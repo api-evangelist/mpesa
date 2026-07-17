@@ -1,0 +1,34 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for M-Pesa Daraja
+  version: 1.0.0
+# Non-mutating Overlay of API Evangelist enhancements over the harvested spec.
+# The original openapi/mpesa-openapi.yml is never edited; apply this overlay to derive
+# the enriched view (rating tag, agentic-access ceilings, webhook + result-code cross-links).
+extends: openapi/mpesa-openapi.yml
+actions:
+- target: $.info
+  update:
+    x-apievangelist-enriched: true
+    x-apievangelist-artifacts:
+      authentication: authentication/mpesa-authentication.yml
+      conventions: conventions/mpesa-conventions.yml
+      sandbox: sandbox/mpesa-sandbox.yml
+      errors: errors/mpesa-problem-types.yml
+      result_codes: errors/mpesa-result-codes.yml
+      asyncapi: asyncapi/mpesa-callbacks-asyncapi.yml
+      agentic_access: agentic-access/mpesa-agentic-access.yml
+- target: $.info
+  update:
+    x-currency: KES
+    x-async-model: >-
+      Funds-movement operations return only a synchronous acknowledgement; the final result is
+      POSTed asynchronously to the caller-hosted ResultURL / ConfirmationURL callback (webhook).
+- target: "$.paths['/mpesa/b2c/v3/paymentrequest'].post"
+  update:
+    x-agentic-consequence: physical
+    x-human-in-the-loop: required
+- target: "$.paths['/mpesa/reversal/v1/request'].post"
+  update:
+    x-agentic-consequence: physical
+    x-human-in-the-loop: required

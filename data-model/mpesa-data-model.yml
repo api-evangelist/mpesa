@@ -1,0 +1,35 @@
+generated: '2026-07-17'
+method: derived
+source: openapi/mpesa-openapi.yml
+description: >-
+  Entity-relationship view of the M-Pesa Daraja domain, derived from the OpenAPI request/response
+  schemas and the id-reference fields that thread through them. Daraja has no REST resource graph
+  (no GET-by-id resources); instead it is a command/callback model where identifiers correlate a
+  request, its acknowledgement, and its asynchronous result. Relationships below are those
+  correlation links.
+notation: >-
+  relationships use has_one / has_many / belongs_to with the correlating field; direction is from
+  the entity that carries the reference.
+entities:
+- {name: App, key: consumerKey, domain: auth, description: A Daraja developer app holding a consumer key/secret pair.}
+- {name: AccessToken, key: access_token, domain: auth, description: Short-lived (~3599s) OAuth bearer token minted from an App.}
+- {name: Shortcode, key: BusinessShortCode, domain: merchant, description: A paybill/till business shortcode that sends or receives funds.}
+- {name: STKTransaction, key: CheckoutRequestID, domain: collections, description: An M-Pesa Express payment prompt and its outcome.}
+- {name: C2BTransaction, key: TransID, domain: collections, description: An inbound customer-to-business payment.}
+- {name: B2CTransaction, key: OriginatorConversationID, domain: disbursement, description: A business-to-customer disbursement.}
+- {name: B2BTransaction, key: OriginatorConversationID, domain: disbursement, description: A business-to-business transfer.}
+- {name: Reversal, key: OriginatorConversationID, domain: disbursement, description: A reversal of a prior transaction.}
+- {name: CallbackResult, key: ConversationID, domain: callbacks, description: The asynchronous result Daraja POSTs to a ResultURL/ConfirmationURL.}
+- {name: Customer, key: PhoneNumber, domain: party, description: An M-Pesa wallet holder identified by MSISDN (2547XXXXXXXX).}
+relationships:
+- {from: AccessToken, to: App, kind: belongs_to, via: consumerKey}
+- {from: STKTransaction, to: Shortcode, kind: belongs_to, via: BusinessShortCode}
+- {from: STKTransaction, to: Customer, kind: belongs_to, via: PhoneNumber}
+- {from: STKTransaction, to: CallbackResult, kind: has_one, via: CheckoutRequestID}
+- {from: C2BTransaction, to: Shortcode, kind: belongs_to, via: ShortCode}
+- {from: C2BTransaction, to: Customer, kind: belongs_to, via: Msisdn}
+- {from: B2CTransaction, to: Shortcode, kind: belongs_to, via: PartyA}
+- {from: B2CTransaction, to: Customer, kind: belongs_to, via: PartyB}
+- {from: B2CTransaction, to: CallbackResult, kind: has_one, via: OriginatorConversationID}
+- {from: B2BTransaction, to: CallbackResult, kind: has_one, via: OriginatorConversationID}
+- {from: Reversal, to: CallbackResult, kind: has_one, via: OriginatorConversationID}

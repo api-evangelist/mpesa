@@ -1,0 +1,61 @@
+generated: '2026-07-17'
+method: derived
+status: candidate
+source: openapi/mpesa-openapi.yml
+description: >-
+  Safaricom does not operate an official hosted/remote MCP server for Daraja. Community MCP
+  servers exist (e.g. mboya/daraja-mcp on lobehub) but are not first-party. The tool list
+  below is a CANDIDATE, derived one-to-one from the M-Pesa Daraja OpenAPI operations — a
+  starting point for exposing Daraja to AI agents. Funds-movement tools (b2c, b2b, reversal,
+  tax_remittance) move real money in KES and should require human-in-the-loop confirmation
+  (see agentic-access/mpesa-agentic-access.yml).
+server:
+  name: mpesa-daraja
+  transport: http
+community_servers:
+- name: daraja-mcp
+  url: https://lobehub.com/mcp/mboya-daraja-mcp
+  official: false
+tools:
+- name: generate_access_token
+  description: Mint a short-lived OAuth access token from consumer key/secret.
+  source_operation: openapi/mpesa-openapi.yml#generateAccessToken
+- name: stk_push
+  description: Initiate an M-Pesa Express (STK Push) PIN prompt to collect a payment.
+  source_operation: openapi/mpesa-openapi.yml#stkPush
+- name: stk_push_query
+  description: Query the status of an STK Push request.
+  source_operation: openapi/mpesa-openapi.yml#stkPushQuery
+- name: c2b_register_url
+  description: Register C2B validation and confirmation callback URLs.
+  source_operation: openapi/mpesa-openapi.yml#c2bRegisterURL
+- name: c2b_simulate
+  description: Simulate an inbound C2B payment (sandbox only).
+  source_operation: openapi/mpesa-openapi.yml#c2bSimulate
+- name: b2c_payment_request
+  description: Disburse funds from a business shortcode to a customer wallet.
+  source_operation: openapi/mpesa-openapi.yml#b2cPaymentRequest
+- name: b2b_payment_request
+  description: Move funds between two business shortcodes.
+  source_operation: openapi/mpesa-openapi.yml#b2bPaymentRequest
+- name: b2b_express_checkout
+  description: Trigger a B2B Express Checkout USSD push to a till operator.
+  source_operation: openapi/mpesa-openapi.yml#b2bExpressCheckout
+- name: transaction_status
+  description: Query the status of an M-Pesa transaction.
+  source_operation: openapi/mpesa-openapi.yml#transactionStatus
+- name: account_balance
+  description: Query the balance of a business shortcode.
+  source_operation: openapi/mpesa-openapi.yml#accountBalance
+- name: reversal
+  description: Reverse an M-Pesa transaction.
+  source_operation: openapi/mpesa-openapi.yml#reversal
+- name: dynamic_qr
+  description: Generate a dynamic M-Pesa QR code.
+  source_operation: openapi/mpesa-openapi.yml#dynamicQR
+- name: tax_remittance
+  description: Remit taxes to the Kenya Revenue Authority (KRA).
+  source_operation: openapi/mpesa-openapi.yml#taxRemittance
+- name: create_standing_order
+  description: Create an M-Pesa Ratiba external standing order.
+  source_operation: openapi/mpesa-openapi.yml#createStandingOrder

@@ -1,0 +1,41 @@
+generated: '2026-07-17'
+method: derived
+source: openapi/mpesa-openapi.yml + security/mpesa-trust-center.yml + Daraja docs
+description: >-
+  Which cross-cutting / industry standards the M-Pesa Daraja API conforms to. Standards
+  posture is derived from the OpenAPI and cross-referenced with Safaricom's published
+  certifications (see security/mpesa-trust-center.yml). Daraja uses OAuth2 client-credentials
+  (bearer token) but is NOT an OIDC or RFC 9457 problem-details API, and its errors use a
+  bespoke {requestId, errorCode, errorMessage} envelope rather than any standard media type.
+standards:
+- id: oauth2-client-credentials
+  conforms: true
+  evidence: >-
+    GET /oauth/v1/generate?grant_type=client_credentials mints a bearer access token from
+    Basic-authenticated consumer key/secret; presented as HTTP Bearer on all product endpoints.
+- id: oidc
+  conforms: false
+  evidence: No openid-configuration or ID tokens; token minting is a bespoke endpoint.
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: Errors use a {requestId, errorCode, errorMessage} envelope, not application/problem+json.
+- id: pci-dss
+  conforms: true
+  evidence: Safaricom holds PCI DSS v4 certification (security/mpesa-trust-center.yml).
+- id: iso-27001
+  conforms: true
+  evidence: Safaricom holds ISO/IEC 27001 certification.
+- id: iso-27701
+  conforms: true
+  evidence: Safaricom holds ISO/IEC 27701 (privacy information management) certification.
+- id: gdpr-kdpa
+  conforms: true
+  evidence: Regulated under Kenya's Data Protection Act 2019; GDPR-aligned privacy statements.
+- id: rfc8594-sunset-deprecation
+  conforms: false
+  evidence: No Sunset/Deprecation headers documented; versioning is by URI path (v1/v2/v3).
+- id: webhooks
+  conforms: true
+  evidence: >-
+    Asynchronous results delivered via caller-hosted HTTPS callback URLs (ResultURL,
+    ConfirmationURL, ValidationURL, QueueTimeOutURL). See asyncapi/mpesa-callbacks-asyncapi.yml.

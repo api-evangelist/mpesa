@@ -1,0 +1,23 @@
+generated: '2026-07-17'
+method: generated
+source: openapi/mpesa-openapi.yml + conventions/ + errors/
+description: >-
+  Packaged Agent Skills for the M-Pesa Daraja API — one per marquee flow, each grounded in real
+  operationIds from openapi/mpesa-openapi.yml and the captured conventions/idempotency/error rules.
+skills:
+- file: mpesa-collect-stk-payment.md
+  name: Collect a payment with M-Pesa Express (STK Push)
+  api: openapi/mpesa-openapi.yml
+  operations: [generateAccessToken, stkPush, stkPushQuery]
+- file: mpesa-disburse-b2c.md
+  name: Disburse funds to a customer (B2C)
+  api: openapi/mpesa-openapi.yml
+  operations: [generateAccessToken, b2cPaymentRequest]
+- file: mpesa-register-c2b-and-receive.md
+  name: Register C2B callbacks and receive customer payments
+  api: openapi/mpesa-openapi.yml
+  operations: [generateAccessToken, c2bRegisterURL, c2bSimulate]
+- file: mpesa-status-and-reversal.md
+  name: Check transaction status and reverse a payment
+  api: openapi/mpesa-openapi.yml
+  operations: [generateAccessToken, transactionStatus, reversal]

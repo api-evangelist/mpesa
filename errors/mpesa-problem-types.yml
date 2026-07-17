@@ -1,0 +1,44 @@
+generated: '2026-07-17'
+method: derived
+source: openapi/mpesa-openapi.yml + Daraja developer documentation
+format: bespoke
+description: >-
+  API-level (synchronous) error semantics for the M-Pesa Daraja API. Daraja does NOT use
+  RFC 9457 problem+json; synchronous failures return a JSON envelope with requestId, errorCode
+  and errorMessage. Note: for funds-movement operations a 200 acknowledgement means only that
+  the request was ACCEPTED — the true transaction outcome arrives asynchronously on the
+  ResultURL callback and is expressed as a ResultCode (see errors/mpesa-result-codes.yml).
+error_envelope:
+  fields:
+    requestId: Correlates the request for support.
+    errorCode: Dotted Daraja error code (e.g. 400.002.02, 401.002.01, 500.001.1001).
+    errorMessage: Human-readable description of the failure.
+problems:
+- status: 400
+  title: Bad Request
+  detail: Invalid or malformed request payload (missing/invalid fields, bad phone number, amount, or shortcode).
+  errorCode_prefix: 400.002.*
+- status: 401
+  title: Invalid Access Token
+  detail: Missing, expired, or invalid OAuth bearer token; re-mint via /oauth/v1/generate and reuse within its ~3599s lifetime.
+  errorCode_prefix: 401.002.*
+- status: 403
+  title: Forbidden
+  detail: Credentials valid but the app/shortcode is not permitted to call this product or the IP is not whitelisted.
+- status: 404
+  title: Not Found
+  detail: Resource or route not found; check the endpoint path and API version segment.
+- status: 429
+  title: Too Many Requests
+  detail: Per-shortcode TPS ceiling exceeded; back off and retry. See rate-limits/mpesa-rate-limits.yml.
+- status: 500
+  title: Server Error
+  detail: Daraja gateway/backend error (e.g. 500.001.1001 system busy / unable to lock subscriber). Retry with exponential backoff.
+  errorCode_prefix: 500.001.*
+- status: 503
+  title: Service Unavailable
+  detail: Downstream M-Pesa core temporarily unavailable; retry later.
+notes: >-
+  Exact dotted errorCode strings vary by product and are documented per-endpoint in the Daraja
+  portal; the prefixes above are the stable families. Transaction decline/outcome reasons are
+  catalogued separately in errors/mpesa-result-codes.yml.

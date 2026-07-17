@@ -1,0 +1,131 @@
+# Provenance: DERIVED from the Daraja callback (webhook) surface.
+# Safaricom does not publish an AsyncAPI document. This AsyncAPI 3.0 was derived from the
+# documented callback URLs the Daraja API POSTs results to (ResultURL, ConfirmationURL,
+# ValidationURL, QueueTimeOutURL). The APPLICATION here is the integrating business's own
+# webhook receiver; Daraja is the event producer. Channels reflect the payloads Daraja sends.
+generated: '2026-07-17'
+method: derived
+source: https://developer.safaricom.co.ke/APIs
+spec_type: AsyncAPI
+asyncapi: 3.0.0
+info:
+  title: M-Pesa Daraja Callbacks
+  version: '1.0'
+  description: >-
+    The asynchronous callback (webhook) surface of the M-Pesa Daraja API. Daraja delivers the
+    real outcome of collections and funds-movement operations by POSTing JSON to caller-hosted
+    HTTPS endpoints. The integrating business hosts these endpoints and registers/supplies their
+    URLs on the originating request.
+defaultContentType: application/json
+channels:
+  stkCallback:
+    address: '{CallBackURL}'
+    description: STK Push (M-Pesa Express) result — POSTed to the CallBackURL supplied on stkPush.
+    parameters:
+      CallBackURL:
+        description: Caller-hosted HTTPS URL supplied in the stkPush request body.
+    messages:
+      stkResult:
+        $ref: '#/components/messages/StkCallback'
+  c2bValidation:
+    address: '{ValidationURL}'
+    description: C2B validation request — Daraja asks the biller to accept/reject an inbound payment (opt-in).
+    parameters:
+      ValidationURL: {description: URL registered via c2bRegisterURL.}
+    messages:
+      c2bValidation:
+        $ref: '#/components/messages/C2BPayment'
+  c2bConfirmation:
+    address: '{ConfirmationURL}'
+    description: C2B confirmation — final notice of a completed inbound customer payment.
+    parameters:
+      ConfirmationURL: {description: URL registered via c2bRegisterURL.}
+    messages:
+      c2bConfirmation:
+        $ref: '#/components/messages/C2BPayment'
+  resultCallback:
+    address: '{ResultURL}'
+    description: >-
+      Final result for B2C, B2B, Reversal, Account Balance, Transaction Status and Tax
+      Remittance — POSTed to the ResultURL supplied on the originating request.
+    parameters:
+      ResultURL: {description: Caller-hosted HTTPS result URL.}
+    messages:
+      result:
+        $ref: '#/components/messages/ResultCallback'
+  timeoutCallback:
+    address: '{QueueTimeOutURL}'
+    description: Timeout notice when a queued funds-movement request is not processed in time.
+    parameters:
+      QueueTimeOutURL: {description: Caller-hosted HTTPS timeout URL.}
+    messages:
+      timeout:
+        $ref: '#/components/messages/ResultCallback'
+operations:
+  receiveStkResult:
+    action: receive
+    channel: {$ref: '#/channels/stkCallback'}
+  receiveC2BValidation:
+    action: receive
+    channel: {$ref: '#/channels/c2bValidation'}
+  receiveC2BConfirmation:
+    action: receive
+    channel: {$ref: '#/channels/c2bConfirmation'}
+  receiveResult:
+    action: receive
+    channel: {$ref: '#/channels/resultCallback'}
+  receiveTimeout:
+    action: receive
+    channel: {$ref: '#/channels/timeoutCallback'}
+components:
+  messages:
+    StkCallback:
+      name: StkCallback
+      contentType: application/json
+      payload:
+        type: object
+        properties:
+          Body:
+            type: object
+            properties:
+              stkCallback:
+                type: object
+                properties:
+                  MerchantRequestID: {type: string}
+                  CheckoutRequestID: {type: string}
+                  ResultCode: {type: integer, description: '0 = success; see errors/mpesa-result-codes.yml'}
+                  ResultDesc: {type: string}
+                  CallbackMetadata:
+                    type: object
+                    description: Present on success; Item[] carries Amount, MpesaReceiptNumber, PhoneNumber, TransactionDate.
+    C2BPayment:
+      name: C2BPayment
+      contentType: application/json
+      payload:
+        type: object
+        properties:
+          TransactionType: {type: string}
+          TransID: {type: string}
+          TransAmount: {type: string}
+          BusinessShortCode: {type: string}
+          BillRefNumber: {type: string}
+          MSISDN: {type: string}
+          FirstName: {type: string}
+    ResultCallback:
+      name: ResultCallback
+      contentType: application/json
+      payload:
+        type: object
+        properties:
+          Result:
+            type: object
+            properties:
+              ResultType: {type: integer}
+              ResultCode: {type: integer, description: '0 = success'}
+              ResultDesc: {type: string}
+              OriginatorConversationID: {type: string}
+              ConversationID: {type: string}
+              TransactionID: {type: string}
+              ResultParameters:
+                type: object
+                description: Key/value result items (e.g. balances, receipt, amounts).

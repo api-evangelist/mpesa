@@ -1,0 +1,32 @@
+generated: '2026-07-17'
+method: searched
+source: https://developer.safaricom.co.ke/APIs + openapi/mpesa-openapi.yml
+description: >-
+  Versioning and lifecycle posture for the M-Pesa Daraja API. Daraja versions each product
+  independently in the URI path (v1/v2/v3). Safaricom does not publish a formal deprecation
+  policy, RFC 8594 Sunset/Deprecation headers, an SLA document, or a public status page for
+  Daraja — so no StatusPage or Deprecation rating pointer is emitted (honest absence). Version
+  evolution is announced via portal notices and email to registered developers.
+versioning:
+  scheme: uri-path-per-product
+  examples:
+    b2c: v3 (current) — /mpesa/b2c/v3/paymentrequest; v1/v2 predecessors retired.
+    c2b: v1 register/simulate; v2 register URL also in use.
+    stk_push: v1 — /mpesa/stkpush/v1/processrequest
+    standing_order: v1 — /standingorder/v1/createStandingOrderExternal
+  docs: https://developer.safaricom.co.ke/APIs
+deprecation:
+  policy_url: null
+  sunset_header: false
+  note: >-
+    No published deprecation policy or Sunset/Deprecation header support. Older B2C versions
+    (v1/v2) were superseded by v3; migrations are communicated through the developer portal.
+sla:
+  url: null
+  uptime_target: null
+  note: No public SLA/uptime commitment for the Daraja developer platform.
+status_page: null
+status_page_note: >-
+  No dedicated Daraja status page. Safaricom posts major service notices via
+  https://www.safaricom.co.ke/ and the developer portal.
+deprecated_operations: []

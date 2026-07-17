@@ -1,0 +1,33 @@
+generated: '2026-07-17'
+method: searched
+source: live probe of /.well-known/* on all Daraja hosts
+description: >-
+  Probe of the standard /.well-known/ discovery surface on every M-Pesa Daraja host
+  (production api.safaricom.co.ke, sandbox.safaricom.co.ke, and the developer portal).
+  None are published — every probed path returned 404 on 2026-07-17. This is a valid,
+  expected result: Daraja predates the well-known discovery conventions and mints OAuth
+  tokens from a bespoke GET /oauth/v1/generate endpoint rather than an OIDC/RFC 8414
+  authorization-server document. No security.txt is published either (see
+  security/mpesa-vulnerability-disclosure.yml — Safaricom runs a HackerOne VDP instead).
+hosts:
+- host: https://api.safaricom.co.ke
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/oauth-authorization-server, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
+  - {path: /.well-known/ai-plugin.json, status: 404}
+- host: https://sandbox.safaricom.co.ke
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/oauth-authorization-server, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
+  - {path: /.well-known/ai-plugin.json, status: 404}
+- host: https://developer.safaricom.co.ke
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/oauth-authorization-server, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
+  - {path: /.well-known/ai-plugin.json, status: 404}

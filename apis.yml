@@ -277,6 +277,56 @@ common:
   url: rate-limits/mpesa-rate-limits.yml
 - type: FinOps
   url: finops/mpesa-finops.yml
+- type: Security
+  url: security/mpesa-vulnerability-disclosure.yml
+- type: Compliance
+  url: security/mpesa-trust-center.yml
+- type: Conformance
+  url: conformance/mpesa-conformance.yml
+- type: Packages
+  url: packages/mpesa-packages.yml
+- type: MCPServer
+  url: mcp/mpesa-mcp.yml
+- type: LLMsTxt
+  url: llms/mpesa-llms.txt
+- type: Overlay
+  url: overlays/mpesa-openapi-overlay.yaml
+- type: ErrorCatalog
+  url: errors/mpesa-problem-types.yml
+- type: DeclineCodes
+  url: errors/mpesa-result-codes.yml
+- type: Lifecycle
+  url: lifecycle/mpesa-lifecycle.yml
+- type: Conventions
+  url: conventions/mpesa-conventions.yml
+- type: Idempotency
+  url: conventions/mpesa-conventions.yml
+- type: Sandbox
+  url: sandbox/mpesa-sandbox.yml
+- type: DataModel
+  url: data-model/mpesa-data-model.yml
+- type: AsyncAPI
+  url: asyncapi/mpesa-callbacks-asyncapi.yml
+- type: Webhooks
+  url: asyncapi/mpesa-callbacks-asyncapi.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: DeveloperPortal
+  url: https://developer.safaricom.co.ke/
+- type: APIReference
+  url: https://developer.safaricom.co.ke/APIs
+- type: GettingStarted
+  url: https://developer.safaricom.co.ke/
+- type: Support
+  url: https://developer.safaricom.co.ke/faqs
+- type: SignUp
+  url: https://developer.safaricom.co.ke/
+- type: TermsOfService
+  url: https://developer.safaricom.co.ke/
+- type: PrivacyPolicy
+  url: https://www.safaricom.co.ke/data-privacy-statements
+- type: Postman
+  url: collections/mpesa.postman_collection.json
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

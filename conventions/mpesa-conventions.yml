@@ -1,0 +1,61 @@
+generated: '2026-07-17'
+method: searched
+source: https://developer.safaricom.co.ke/APIs + openapi/mpesa-openapi.yml
+description: >-
+  Cross-cutting request/response conventions that apply across the M-Pesa Daraja API — the
+  runtime semantics OpenAPI does not fully express. Daraja is a two-step-auth, callback-driven
+  (asynchronous) REST API: most funds-movement calls return only an acknowledgement and deliver
+  the real outcome to a caller-hosted webhook. Cross-links: authentication/, errors/,
+  asyncapi/, rate-limits/, lifecycle/.
+base_urls:
+  production: https://api.safaricom.co.ke
+  sandbox: https://sandbox.safaricom.co.ke
+api_style: REST over HTTPS, JSON request and response bodies.
+currency: KES (Kenyan Shillings); amounts are whole-shilling integers.
+authentication:
+  scheme: >-
+    Two-step. (1) HTTP Basic (consumer key/secret) against GET /oauth/v1/generate to mint a
+    bearer access token (~3599s). (2) Bearer token on all product endpoints. Privileged
+    funds-movement operations additionally require a SecurityCredential (initiator password
+    RSA-encrypted with the M-Pesa public X.509 certificate); STK Push requires a Base64
+    Password = Base64(Shortcode + Passkey + Timestamp).
+  detail: authentication/mpesa-authentication.yml
+idempotency:
+  supported: partial
+  mechanism: >-
+    No Idempotency-Key header. De-duplication is client-driven via a unique
+    OriginatorConversationID supplied on B2C/B2B/Reversal/Status/Balance requests (and a unique
+    AccountReference/CheckoutRequestID on collections). Safaricom correlates results back to the
+    OriginatorConversationID, so supplying a stable unique value per logical transaction lets a
+    caller detect and avoid duplicate funds movement on retries.
+  applies_to: Funds-movement POST operations (B2C, B2B, Reversal, Tax Remittance).
+  note: >-
+    This is a correlation-id dedup convention, not a server-enforced idempotency-key contract.
+    Always treat the asynchronous ResultURL callback as the source of truth before retrying.
+  docs: https://developer.safaricom.co.ke/APIs
+pagination:
+  supported: false
+  note: Daraja operations are single-transaction commands/queries; there are no list endpoints, so no pagination.
+async_callbacks:
+  model: >-
+    The defining convention. Funds-movement and query operations return a synchronous
+    ResponseCode acknowledgement only; the authoritative result is POSTed asynchronously to
+    caller-hosted HTTPS callback URLs. Callback URLs must be publicly reachable HTTPS endpoints.
+  callback_fields:
+    STK Push: CallBackURL
+    C2B: ValidationURL, ConfirmationURL
+    B2C/B2B/Reversal/Balance/Status/Tax: ResultURL (final result) + QueueTimeOutURL (timeout)
+  detail: asyncapi/mpesa-callbacks-asyncapi.yml
+request_tracing:
+  fields: [OriginatorConversationID, ConversationID, MerchantRequestID, CheckoutRequestID, requestId]
+  note: These IDs correlate a request, its acknowledgement, and its asynchronous callback result.
+versioning:
+  style: URI path per product (v1/v2/v3).
+  detail: lifecycle/mpesa-lifecycle.yml
+error_envelope:
+  synchronous: "{requestId, errorCode, errorMessage}"
+  asynchronous: ResultCode / ResultDesc on the callback (0 = success).
+  detail: errors/mpesa-problem-types.yml + errors/mpesa-result-codes.yml
+rate_limiting:
+  signalling: Per-shortcode TPS ceilings (commercially provisioned); token lifetime ~3599s.
+  detail: rate-limits/mpesa-rate-limits.yml

@@ -1,0 +1,48 @@
+generated: '2026-07-17'
+method: searched
+source: >-
+  https://developer.safaricom.co.ke/APIs +
+  https://tuma.co.ke/common-mpesa-daraja-api-error-codes-explanation-and-mitigation/ +
+  https://www.kenzobe.com/blog/mpesa-daraja-api-errors
+description: >-
+  Transaction RESULT codes returned on the asynchronous M-Pesa callback (the payments
+  equivalent of card decline codes). For STK Push these arrive in the callback ResultCode
+  field; for B2C/B2B/Reversal/Balance/Status they arrive in the ResultURL payload. ResultCode 0
+  is the only success value — every other code indicates the transaction did not complete and
+  the reason is in ResultDesc. This complements errors/mpesa-problem-types.yml (API/HTTP errors).
+envelope_field: ResultCode
+success_code: 0
+buyer_masked: >-
+  Customers see a generic M-Pesa failure SMS; the granular ResultCode is exposed only to the
+  integrating business via the callback.
+decline_codes:
+- code: 0
+  meaning: Success — transaction completed.
+  action: Reconcile against the callback ResultParameters (receipt, amount, phone).
+- code: 1
+  meaning: Insufficient funds — no M-Pesa balance nor available Fuliza overdraft.
+  action: Ask the customer to top up and retry.
+- code: 17
+  meaning: Party B unable to process transaction — receiving shortcode temporarily unavailable.
+  action: Wait 30-45s and retry.
+- code: 1001
+  meaning: Unable to lock subscriber / transaction in progress — an active USSD session is processing another transaction.
+  action: Wait 1-2 minutes and retry.
+- code: 1019
+  meaning: Transaction expired — the user took too long to respond.
+  action: Reinitiate the payment.
+- code: 1025
+  meaning: Unable to send STK prompt — temporary system issue or TransactionDesc exceeds 182 characters.
+  action: Keep TransactionDesc under 182 chars, confirm a valid Safaricom MSISDN, then retry.
+- code: 1032
+  meaning: Request cancelled by user — the customer pressed Cancel instead of entering their PIN.
+  action: Reinitiate the payment; this is a customer choice, not a system fault.
+- code: 1037
+  meaning: DS timeout / MSISDN unreachable — the prompt was sent but the phone did not respond within ~60s (off, out of coverage, or ignored).
+  action: Ask the customer to keep the phone on/reachable and retry.
+- code: 2001
+  meaning: Invalid initiator information / wrong M-Pesa PIN entered.
+  action: Ask the customer to re-enter the correct PIN (3-attempt limit).
+- code: 9999
+  meaning: Unable to send STK prompt — generic temporary error (often paired with 1025 conditions).
+  action: Verify request fields and retry after a short delay.

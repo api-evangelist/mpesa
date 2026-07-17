@@ -1,0 +1,53 @@
+generated: '2026-07-17'
+method: searched
+source: npm, PyPI, Packagist, Hex registry search + Daraja developer community
+description: >-
+  Safaricom does NOT publish an official first-party SDK for the Daraja API — integration
+  is done directly against the REST endpoints. A large community ecosystem of client
+  libraries exists across languages; the ones below were verified live on their registries
+  (HTTP 200). All are community-maintained (official: false); none are endorsed by Safaricom.
+  Because no first-party SDK exists, no `SDKs` rating pointer is emitted for this provider.
+packages:
+- language: python
+  registry: pypi
+  name: django-daraja
+  url: https://pypi.org/project/django-daraja/
+  install: pip install django-daraja
+  official: false
+  note: Popular Django wrapper for Daraja STK Push / C2B / B2C.
+- language: python
+  registry: pypi
+  name: mpesa-connect
+  url: https://pypi.org/project/mpesa-connect/
+  install: pip install mpesa-connect
+  official: false
+- language: javascript
+  registry: npm
+  name: mpesa-node
+  url: https://www.npmjs.com/package/mpesa-node
+  install: npm install mpesa-node
+  official: false
+- language: javascript
+  registry: npm
+  name: daraja.js
+  url: https://www.npmjs.com/package/daraja.js
+  install: npm install daraja.js
+  official: false
+- language: javascript
+  registry: npm
+  name: mpesa-api
+  url: https://www.npmjs.com/package/mpesa-api
+  install: npm install mpesa-api
+  official: false
+- language: php
+  registry: packagist
+  name: felixmuhoro/laravel-mpesa
+  url: https://packagist.org/packages/felixmuhoro/laravel-mpesa
+  install: composer require felixmuhoro/laravel-mpesa
+  official: false
+- language: elixir
+  registry: hex
+  name: ex_pesa
+  url: https://hex.pm/packages/ex_pesa
+  install: "{:ex_pesa, \"~> 0.1\"}"
+  official: false
