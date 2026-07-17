@@ -1,0 +1,128 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: M-Pesa (Safaricom Daraja)
+providerId: mpesa
+created: '2026-07-17'
+modified: '2026-07-17'
+reconciled: false
+tags:
+- Mobile Money
+- Payments
+- Fintech
+- Kenya
+- Plans
+description: >-
+  The Daraja API itself is free to access — Safaricom does not charge a per-call or
+  subscription fee for the developer API. Cost is incurred through M-Pesa transaction
+  tariffs, which are set by Safaricom's commercial agreements per business shortcode
+  (paybill/till) and are regulated by the Central Bank of Kenya. Charges vary by product
+  (C2B, B2C, B2B), transaction band, and negotiated merchant rate, and are billed in
+  Kenyan Shillings (KES). Sandbox access is free and unmetered. There are no published
+  Free/Pro/Enterprise API tiers; access is via a registered Daraja app (consumer
+  key/secret) plus a live business shortcode.
+notes: >-
+  Per-transaction tariffs are commercial and not published as a fixed public rate card
+  in the developer portal; they are governed by the merchant's M-Pesa business agreement
+  and CBK-approved tariff bands. Verify current rates with Safaricom business onboarding.
+sources:
+- https://developer.safaricom.co.ke/
+- https://www.safaricom.co.ke/business/sme/payment-solutions
+plans:
+- id: mpesa-sandbox
+  name: Sandbox
+  type: free
+  description: >-
+    Free, unmetered test environment on https://sandbox.safaricom.co.ke with test
+    credentials and simulated shortcodes for every Daraja product.
+  entries:
+  - label: Sandbox Access
+    name: sandbox
+    type: free
+    metric: requests
+    limit: -1
+    timeFrame: month
+    geo: KE
+    unit: 1
+    price: free
+    userMultiplied: false
+  elements:
+  - name: All Daraja Products (test)
+- id: mpesa-production
+  name: Production (Live Shortcode)
+  type: usage
+  description: >-
+    Free Daraja API access tied to a live business shortcode. Cost is the underlying
+    M-Pesa transaction tariff per product, billed in KES per commercial agreement.
+  entries:
+  - label: Daraja API Access
+    name: api_access
+    type: free
+    metric: requests
+    limit: -1
+    timeFrame: month
+    geo: KE
+    unit: 1
+    price: free (no API fee)
+    userMultiplied: false
+  - label: C2B / STK Push Collection Tariff
+    name: c2b_tariff
+    type: usage
+    metric: transactions
+    limit: -1
+    timeFrame: month
+    geo: KE
+    unit: 1
+    price: per M-Pesa merchant tariff (KES), CBK-regulated band
+    userMultiplied: false
+  - label: B2C Disbursement Tariff
+    name: b2c_tariff
+    type: usage
+    metric: transactions
+    limit: -1
+    timeFrame: month
+    geo: KE
+    unit: 1
+    price: per B2C tariff band (KES), commercial agreement
+    userMultiplied: false
+  - label: B2B Transfer Tariff
+    name: b2b_tariff
+    type: usage
+    metric: transactions
+    limit: -1
+    timeFrame: month
+    geo: KE
+    unit: 1
+    price: per B2B tariff band (KES), commercial agreement
+    userMultiplied: false
+  elements:
+  - name: M-Pesa Express (STK Push)
+  - name: Customer To Business (C2B)
+  - name: Business To Customer (B2C)
+  - name: Business To Business (B2B)
+  - name: Dynamic QR
+  - name: Bill Manager
+  - name: M-Pesa Ratiba
+- id: mpesa-enterprise
+  name: Enterprise / Aggregator
+  type: enterprise
+  description: >-
+    Negotiated tariffs, higher throughput, and aggregator/PSP arrangements for banks,
+    fintechs, and payment aggregators. Contact Safaricom business.
+  entries:
+  - label: Negotiated Agreement
+    name: enterprise
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: year
+    geo: KE
+    unit: 1
+    price: contact Safaricom business
+    userMultiplied: false
+  elements:
+  - name: Custom Tariffs
+  - name: Aggregator / PSP Access
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

@@ -1,0 +1,57 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: M-Pesa (Safaricom Daraja)
+providerId: mpesa
+created: '2026-07-17'
+modified: '2026-07-17'
+reconciled: false
+tags:
+- Mobile Money
+- Payments
+- Kenya
+- Rate Limiting
+- Quotas
+- Throttling
+description: >-
+  Daraja enforces throttling at the gateway. OAuth access tokens are short-lived
+  (~3599 seconds) and should be reused within their validity window rather than
+  re-minted per request. Transaction endpoints are subject to per-shortcode
+  transaction-per-second (TPS) ceilings that are provisioned commercially and are
+  not published as fixed public numbers; excessive requests are rejected. Sandbox
+  applies lighter limits suitable for testing only.
+notes: >-
+  Specific per-shortcode TPS ceilings are set during business onboarding and are not
+  documented as public constants. Verify with Safaricom business/technical onboarding.
+sources:
+- https://developer.safaricom.co.ke/
+- https://developer.safaricom.co.ke/APIs/Authorization
+responseCodes:
+  throttled: 429
+  serverBusy: 500
+limits:
+- name: OAuth Token Lifetime
+  scope: application
+  metric: seconds
+  limit: '3599'
+  notes: Access token validity; reuse the token until expiry instead of re-generating per call.
+- name: Transactions Per Second (TPS)
+  scope: shortcode
+  metric: transactions
+  limit: see provider onboarding
+  notes: Per-shortcode ceiling provisioned commercially; not a fixed public value.
+- name: Sandbox Throttle
+  scope: application
+  metric: requests
+  limit: see provider documentation
+  notes: Lighter limits for the sandbox test environment.
+policies:
+- name: Token Reuse
+  description: Cache and reuse the OAuth access token within its ~3599s lifetime; do not mint a new token per request.
+- name: Backoff Strategy
+  description: Implement exponential backoff with jitter on 429/500 responses and treat asynchronous ResultURL callbacks as the source of truth for final status.
+- name: Idempotency
+  description: Use unique OriginatorConversationID / AccountReference values to avoid duplicate funds movement on retries.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

@@ -1,0 +1,72 @@
+aid: mpesa
+name: M-Pesa (Safaricom Daraja)
+review:
+  question: Does M-Pesa (Safaricom Daraja) expose a documented public WebSocket API?
+  answer: false
+  date: '2026-07-17'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    No AsyncAPI document was created. The Daraja API is entirely request/response
+    HTTPS REST. Asynchronous results (B2C, B2B, Account Balance, Transaction Status,
+    Reversal) and C2B validation/confirmation are delivered as HTTP POST webhooks to
+    caller-hosted HTTPS callback URLs (ResultURL / QueueTimeOutURL / ConfirmationURL /
+    ValidationURL). These are ordinary inbound HTTP requests, not a WebSocket stream and
+    not an HTTP Server-Sent Events (SSE) stream, so no AsyncAPI channel was modeled.
+findings:
+  summary: |
+    Safaricom's Daraja platform does not publish a documented public WebSocket API.
+    All M-Pesa developer products (M-Pesa Express/STK Push, C2B, B2C, B2B, B2B Express
+    Checkout, Transaction Status, Account Balance, Reversal, Dynamic QR, Tax Remittance,
+    Bill Manager, M-Pesa Ratiba) are HTTPS REST endpoints under
+    https://api.safaricom.co.ke (production) and https://sandbox.safaricom.co.ke
+    (sandbox). Long-running and disbursement operations return a synchronous
+    acknowledgement and then POST the final result to a caller-registered HTTPS
+    callback URL. No realtime, bidirectional ws:// or wss:// endpoint is documented.
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://api.safaricom.co.ke
+      documented: true
+    - protocol: Webhook
+      scheme: https
+      note: >-
+        Asynchronous results and C2B validation/confirmation are delivered as HTTP POST
+        callbacks to caller-hosted HTTPS URLs. Inbound HTTP, not WebSocket.
+      documented: true
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: No WebSocket endpoint is documented in the Daraja API reference as of the review date.
+  endpointsConfirmedRest:
+    - GET  https://api.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials
+    - POST https://api.safaricom.co.ke/mpesa/stkpush/v1/processrequest
+    - POST https://api.safaricom.co.ke/mpesa/stkpushquery/v1/query
+    - POST https://api.safaricom.co.ke/mpesa/c2b/v1/registerurl
+    - POST https://api.safaricom.co.ke/mpesa/c2b/v1/simulate
+    - POST https://api.safaricom.co.ke/mpesa/b2c/v3/paymentrequest
+    - POST https://api.safaricom.co.ke/mpesa/b2b/v1/paymentrequest
+    - POST https://api.safaricom.co.ke/v1/ussdpush/get-msisdn
+    - POST https://api.safaricom.co.ke/mpesa/transactionstatus/v1/query
+    - POST https://api.safaricom.co.ke/mpesa/accountbalance/v1/query
+    - POST https://api.safaricom.co.ke/mpesa/reversal/v1/request
+    - POST https://api.safaricom.co.ke/mpesa/qrcode/v1/generate
+    - POST https://api.safaricom.co.ke/mpesa/b2b/v1/remittax
+    - POST https://api.safaricom.co.ke/standingorder/v1/createStandingOrderExternal
+sources:
+  - url: https://developer.safaricom.co.ke/
+    type: Documentation
+    note: Daraja developer portal; lists REST products and sandbox/production hosts. HTTP 200.
+  - url: https://developer.safaricom.co.ke/APIs
+    type: APIReference
+    note: All documented Daraja products are HTTPS REST; no WebSocket mentioned.
+  - url: https://developer.safaricom.co.ke/APIs/Authorization
+    type: Documentation
+    note: OAuth token via GET /oauth/v1/generate with HTTP Basic; token used as Bearer.
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: false
+  reason: |
+    No WebSocket protocol surface exists, and asynchronous delivery is via plain HTTP
+    webhooks rather than an SSE or WebSocket stream. No AsyncAPI document was authored
+    and no AsyncAPI pointer was added to apis.yml.

@@ -1,0 +1,214 @@
+generated: '2026-07-17'
+method: generated
+source: openapi/mpesa-openapi.yml
+description: Recommended x-agentic-access execution contracts, classified heuristically from
+  the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
+  audience per deployment. Funds-movement operations (B2C, B2B, Reversal, Tax Remittance) move
+  real money in KES and are marked human-in-the-loop required. See research/curity/agentic-governance/.
+summary:
+  operations: 14
+  by_action_class:
+    acting: 9
+    connected: 5
+  by_consequence:
+    write: 9
+    read: 5
+  human_in_the_loop_required: 4
+operations:
+- path: /oauth/v1/generate
+  method: get
+  operationId: generateAccessToken
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3599
+    audit: none
+- path: /mpesa/stkpush/v1/processrequest
+  method: post
+  operationId: stkPush
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /mpesa/stkpushquery/v1/query
+  method: post
+  operationId: stkPushQuery
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 900
+    audit: none
+- path: /mpesa/c2b/v1/registerurl
+  method: post
+  operationId: c2bRegisterURL
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+    audit: required
+- path: /mpesa/c2b/v1/simulate
+  method: post
+  operationId: c2bSimulate
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+    audit: required
+- path: /mpesa/b2c/v3/paymentrequest
+  method: post
+  operationId: b2cPaymentRequest
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+    escalation:
+      human-in-the-loop: required
+      triggers:
+      - funds-movement
+      - high-value
+    audit: required
+- path: /mpesa/b2b/v1/paymentrequest
+  method: post
+  operationId: b2bPaymentRequest
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+    escalation:
+      human-in-the-loop: required
+      triggers:
+      - funds-movement
+      - high-value
+    audit: required
+- path: /v1/ussdpush/get-msisdn
+  method: post
+  operationId: b2bExpressCheckout
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /mpesa/transactionstatus/v1/query
+  method: post
+  operationId: transactionStatus
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 900
+    audit: none
+- path: /mpesa/accountbalance/v1/query
+  method: post
+  operationId: accountBalance
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 900
+    audit: none
+- path: /mpesa/reversal/v1/request
+  method: post
+  operationId: reversal
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+    escalation:
+      human-in-the-loop: required
+      triggers:
+      - funds-movement
+      - high-value
+    audit: required
+- path: /mpesa/qrcode/v1/generate
+  method: post
+  operationId: dynamicQR
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+    audit: required
+- path: /mpesa/b2b/v1/remittax
+  method: post
+  operationId: taxRemittance
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+    escalation:
+      human-in-the-loop: required
+      triggers:
+      - funds-movement
+      - high-value
+    audit: required
+- path: /standingorder/v1/createStandingOrderExternal
+  method: post
+  operationId: createStandingOrder
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required

@@ -1,0 +1,39 @@
+generated: '2026-07-17'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: developer.safaricom.co.ke
+  https: true
+  http_status: 200
+  cert_issuer: DigiCert Global G2 TLS RSA SHA256 2020 CA1
+  cert_expires: Nov 18 23:59:59 2026 GMT
+  hsts: true
+  hsts_max_age: 31536000
+- host: api.safaricom.co.ke
+  https: true
+  http_status: 404
+  http_note: Production API gateway; root returns 404, product paths live under /mpesa/*, /oauth/*.
+  cert_issuer: DigiCert Global G2 TLS RSA SHA256 2020 CA1
+  cert_expires: Oct  6 23:59:59 2026 GMT
+  hsts: null
+- host: sandbox.safaricom.co.ke
+  https: true
+  http_status: 404
+  http_note: Sandbox API gateway; root returns 404, product paths live under /mpesa/*, /oauth/*.
+  cert_issuer: DigiCert Global G2 TLS RSA SHA256 2020 CA1
+  cert_expires: Sep  8 23:59:59 2026 GMT
+  hsts: true
+  hsts_max_age: 31536000
+domains:
+- domain: safaricom.co.ke
+  spf: true
+  spf_policy: ~all
+  dmarc: true
+  dmarc_policy: reject
+  dmarc_subdomain_policy: reject
+notes: >-
+  All Daraja hosts serve HTTPS with DigiCert-issued certificates. Parent domain
+  safaricom.co.ke publishes SPF (softfail) and a strict DMARC reject policy. Beyond
+  transport security, Daraja funds-movement operations require an application-layer
+  SecurityCredential (initiator password RSA-encrypted with Safaricom's M-Pesa public
+  X.509 certificate).

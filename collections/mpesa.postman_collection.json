@@ -1,0 +1,266 @@
+{
+  "info": {
+    "name": "M-Pesa Daraja API",
+    "description": "Safaricom Daraja REST API for the M-Pesa mobile-money platform (Kenya). Modeled from public Daraja documentation at https://developer.safaricom.co.ke/APIs. Set {{baseUrl}} to https://sandbox.safaricom.co.ke (sandbox) or https://api.safaricom.co.ke (production). First call 'Generate Access Token' with Basic auth (consumer key/secret), then use the returned token as a Bearer token on every other request. Amounts are in Kenyan Shillings (KES).",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "https://sandbox.safaricom.co.ke" },
+    { "key": "consumerKey", "value": "" },
+    { "key": "consumerSecret", "value": "" },
+    { "key": "accessToken", "value": "" },
+    { "key": "shortCode", "value": "174379" }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [{ "key": "token", "value": "{{accessToken}}", "type": "string" }]
+  },
+  "item": [
+    {
+      "name": "Authorization",
+      "item": [
+        {
+          "name": "Generate Access Token",
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": [
+                { "key": "username", "value": "{{consumerKey}}", "type": "string" },
+                { "key": "password", "value": "{{consumerSecret}}", "type": "string" }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/oauth/v1/generate?grant_type=client_credentials",
+              "host": ["{{baseUrl}}"],
+              "path": ["oauth", "v1", "generate"],
+              "query": [{ "key": "grant_type", "value": "client_credentials" }]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "M-Pesa Express (STK Push)",
+      "item": [
+        {
+          "name": "STK Push - Process Request",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"BusinessShortCode\": \"{{shortCode}}\",\n  \"Password\": \"<base64(shortcode+passkey+timestamp)>\",\n  \"Timestamp\": \"20260717120000\",\n  \"TransactionType\": \"CustomerPayBillOnline\",\n  \"Amount\": 100,\n  \"PartyA\": \"2547XXXXXXXX\",\n  \"PartyB\": \"{{shortCode}}\",\n  \"PhoneNumber\": \"2547XXXXXXXX\",\n  \"CallBackURL\": \"https://example.com/callback\",\n  \"AccountReference\": \"INV001\",\n  \"TransactionDesc\": \"Payment\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/mpesa/stkpush/v1/processrequest",
+              "host": ["{{baseUrl}}"],
+              "path": ["mpesa", "stkpush", "v1", "processrequest"]
+            }
+          }
+        },
+        {
+          "name": "STK Push - Query",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"BusinessShortCode\": \"{{shortCode}}\",\n  \"Password\": \"<base64(shortcode+passkey+timestamp)>\",\n  \"Timestamp\": \"20260717120000\",\n  \"CheckoutRequestID\": \"ws_CO_XXXXXXXXXX\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/mpesa/stkpushquery/v1/query",
+              "host": ["{{baseUrl}}"],
+              "path": ["mpesa", "stkpushquery", "v1", "query"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Customer To Business (C2B)",
+      "item": [
+        {
+          "name": "C2B - Register URL",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ShortCode\": \"{{shortCode}}\",\n  \"ResponseType\": \"Completed\",\n  \"ConfirmationURL\": \"https://example.com/confirmation\",\n  \"ValidationURL\": \"https://example.com/validation\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/mpesa/c2b/v1/registerurl",
+              "host": ["{{baseUrl}}"],
+              "path": ["mpesa", "c2b", "v1", "registerurl"]
+            }
+          }
+        },
+        {
+          "name": "C2B - Simulate (sandbox)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ShortCode\": \"{{shortCode}}\",\n  \"CommandID\": \"CustomerPayBillOnline\",\n  \"Amount\": 100,\n  \"Msisdn\": \"254708374149\",\n  \"BillRefNumber\": \"INV001\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/mpesa/c2b/v1/simulate",
+              "host": ["{{baseUrl}}"],
+              "path": ["mpesa", "c2b", "v1", "simulate"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Business To Customer (B2C)",
+      "item": [
+        {
+          "name": "B2C - Payment Request",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"OriginatorConversationID\": \"unique-id-001\",\n  \"InitiatorName\": \"testapi\",\n  \"SecurityCredential\": \"<initiator-password-rsa-encrypted-with-mpesa-cert>\",\n  \"CommandID\": \"BusinessPayment\",\n  \"Amount\": 100,\n  \"PartyA\": \"{{shortCode}}\",\n  \"PartyB\": \"2547XXXXXXXX\",\n  \"Remarks\": \"Payout\",\n  \"QueueTimeOutURL\": \"https://example.com/timeout\",\n  \"ResultURL\": \"https://example.com/result\",\n  \"Occasion\": \"\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/mpesa/b2c/v3/paymentrequest",
+              "host": ["{{baseUrl}}"],
+              "path": ["mpesa", "b2c", "v3", "paymentrequest"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Business To Business (B2B)",
+      "item": [
+        {
+          "name": "B2B - Payment Request",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"Initiator\": \"testapi\",\n  \"SecurityCredential\": \"<rsa-encrypted-credential>\",\n  \"CommandID\": \"BusinessPayBill\",\n  \"SenderIdentifierType\": \"4\",\n  \"RecieverIdentifierType\": \"4\",\n  \"Amount\": 100,\n  \"PartyA\": \"{{shortCode}}\",\n  \"PartyB\": \"600000\",\n  \"AccountReference\": \"INV001\",\n  \"Remarks\": \"Transfer\",\n  \"QueueTimeOutURL\": \"https://example.com/timeout\",\n  \"ResultURL\": \"https://example.com/result\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/mpesa/b2b/v1/paymentrequest",
+              "host": ["{{baseUrl}}"],
+              "path": ["mpesa", "b2b", "v1", "paymentrequest"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Transaction Status",
+      "item": [
+        {
+          "name": "Transaction Status - Query",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"Initiator\": \"testapi\",\n  \"SecurityCredential\": \"<rsa-encrypted-credential>\",\n  \"CommandID\": \"TransactionStatusQuery\",\n  \"TransactionID\": \"OEI2AK4Q16\",\n  \"PartyA\": \"{{shortCode}}\",\n  \"IdentifierType\": \"4\",\n  \"ResultURL\": \"https://example.com/result\",\n  \"QueueTimeOutURL\": \"https://example.com/timeout\",\n  \"Remarks\": \"Status\",\n  \"Occasion\": \"\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/mpesa/transactionstatus/v1/query",
+              "host": ["{{baseUrl}}"],
+              "path": ["mpesa", "transactionstatus", "v1", "query"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Account Balance",
+      "item": [
+        {
+          "name": "Account Balance - Query",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"Initiator\": \"testapi\",\n  \"SecurityCredential\": \"<rsa-encrypted-credential>\",\n  \"CommandID\": \"AccountBalance\",\n  \"PartyA\": \"{{shortCode}}\",\n  \"IdentifierType\": \"4\",\n  \"Remarks\": \"Balance\",\n  \"QueueTimeOutURL\": \"https://example.com/timeout\",\n  \"ResultURL\": \"https://example.com/result\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/mpesa/accountbalance/v1/query",
+              "host": ["{{baseUrl}}"],
+              "path": ["mpesa", "accountbalance", "v1", "query"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Reversal",
+      "item": [
+        {
+          "name": "Reversal - Request",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"Initiator\": \"testapi\",\n  \"SecurityCredential\": \"<rsa-encrypted-credential>\",\n  \"CommandID\": \"TransactionReversal\",\n  \"TransactionID\": \"OEI2AK4Q16\",\n  \"Amount\": 100,\n  \"ReceiverParty\": \"{{shortCode}}\",\n  \"RecieverIdentifierType\": \"11\",\n  \"ResultURL\": \"https://example.com/result\",\n  \"QueueTimeOutURL\": \"https://example.com/timeout\",\n  \"Remarks\": \"Reversal\",\n  \"Occasion\": \"\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/mpesa/reversal/v1/request",
+              "host": ["{{baseUrl}}"],
+              "path": ["mpesa", "reversal", "v1", "request"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Dynamic QR",
+      "item": [
+        {
+          "name": "Dynamic QR - Generate",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"MerchantName\": \"TEST SHOP\",\n  \"RefNo\": \"INV001\",\n  \"Amount\": 100,\n  \"TrxCode\": \"BG\",\n  \"CPI\": \"{{shortCode}}\",\n  \"Size\": \"300\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/mpesa/qrcode/v1/generate",
+              "host": ["{{baseUrl}}"],
+              "path": ["mpesa", "qrcode", "v1", "generate"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Tax Remittance",
+      "item": [
+        {
+          "name": "Tax Remittance - Pay Tax To KRA",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"Initiator\": \"testapi\",\n  \"SecurityCredential\": \"<rsa-encrypted-credential>\",\n  \"CommandID\": \"PayTaxToKRA\",\n  \"SenderIdentifierType\": \"4\",\n  \"RecieverIdentifierType\": \"4\",\n  \"Amount\": 100,\n  \"PartyA\": \"{{shortCode}}\",\n  \"PartyB\": \"572572\",\n  \"AccountReference\": \"<KRA-PRN>\",\n  \"Remarks\": \"Tax payment\",\n  \"QueueTimeOutURL\": \"https://example.com/timeout\",\n  \"ResultURL\": \"https://example.com/result\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/mpesa/b2b/v1/remittax",
+              "host": ["{{baseUrl}}"],
+              "path": ["mpesa", "b2b", "v1", "remittax"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

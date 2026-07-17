@@ -1,0 +1,97 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: M-Pesa (Safaricom Daraja)
+providerId: mpesa
+created: '2026-07-17'
+modified: '2026-07-17'
+reconciled: false
+tags:
+- Mobile Money
+- Payments
+- Kenya
+- FinOps
+- Cost Management
+- FOCUS
+description: >-
+  FinOps view of M-Pesa Daraja spend. The Daraja API carries no per-call fee; cost is
+  the underlying M-Pesa transaction tariff per product (C2B collection, B2C
+  disbursement, B2B transfer), billed in Kenyan Shillings (KES) and settled against the
+  business shortcode float. Tariffs follow CBK-regulated bands and the merchant's
+  commercial agreement, so cost is driven by transaction count, amount band, and
+  product mix rather than by API usage.
+notes: >-
+  Per-transaction tariffs are commercial/regulated and not published as a fixed public
+  rate card; reconcile against Safaricom merchant statements and CBK tariff bands.
+sources:
+- https://developer.safaricom.co.ke/
+- https://www.safaricom.co.ke/business/sme/payment-solutions
+- https://focus.finops.org/focus-specification/v1-3/
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: Safaricom
+serviceCategory: Payments and Financial Services
+billingModel:
+  pricingCategory: Usage-Based
+  billingFrequency: Per-Transaction
+  billingCurrency: KES
+  chargeCategories:
+  - Usage
+  - Tax
+  - Adjustment
+focusColumns:
+  ServiceName: M-Pesa Daraja
+  ServiceCategory: Payments and Financial Services
+  ProviderName: Safaricom
+  PublisherName: Safaricom
+  InvoiceIssuerName: Safaricom
+  BillingCurrency: KES
+  ChargeCategory: Usage
+  PricingCategory: Usage-Based
+meters:
+- name: c2b_collection_transactions
+  description: Inbound C2B / STK Push collection transactions, tariffed per amount band.
+  unit: transactions
+  aggregation: sum
+  dimensions:
+  - shortcode
+  - product
+  - amount_band
+- name: b2c_disbursement_transactions
+  description: Outbound B2C payouts (salary/business/promotion), tariffed per amount band.
+  unit: transactions
+  aggregation: sum
+  dimensions:
+  - shortcode
+  - command_id
+  - amount_band
+- name: b2b_transfer_transactions
+  description: Business-to-business transfers between shortcodes, tariffed per amount band.
+  unit: transactions
+  aggregation: sum
+  dimensions:
+  - shortcode
+  - command_id
+  - amount_band
+- name: float_balance
+  description: Working/available float on the business shortcode funding disbursements.
+  unit: KES
+  aggregation: last
+  dimensions:
+  - shortcode
+principles:
+- name: Visibility
+  description: Reconcile M-Pesa statements and ResultURL callbacks per shortcode; track transaction count and tariff by product.
+- name: Allocation
+  description: Map shortcodes / paybills to business units and cost centers; tag Daraja apps per workload.
+- name: Optimization
+  description: Batch and net disbursements, keep float sized to demand, and choose the lowest-tariff product path for each payment type.
+- name: Accountability
+  description: Assign an owner per shortcode; review transaction spend and failed/reversed transactions monthly.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

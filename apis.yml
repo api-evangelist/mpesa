@@ -1,0 +1,282 @@
+aid: mpesa
+url: https://raw.githubusercontent.com/api-evangelist/mpesa/refs/heads/main/apis.yml
+name: M-Pesa (Safaricom Daraja)
+kind: company
+description: M-Pesa is Safaricom's mobile-money platform for Kenya, exposed to developers
+  through the Daraja API. The Daraja REST APIs let businesses collect payments (M-Pesa
+  Express / STK Push, C2B), disburse funds (B2C, B2B), query transactions and balances,
+  reverse payments, generate dynamic QR codes, and run standing orders — authorized
+  with OAuth bearer tokens minted from Basic credentials, priced in Kenyan Shillings
+  (KES).
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Mobile Money
+- Payments
+- Fintech
+- Kenya
+- Africa
+- M-Pesa
+created: '2026-07-17'
+modified: '2026-07-17'
+specificationVersion: '0.19'
+apis:
+- aid: mpesa:mpesa-authorization-api
+  name: M-Pesa Authorization API
+  tags:
+  - OAuth
+  - Authentication
+  - Access Token
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developer.safaricom.co.ke/APIs/Authorization
+  baseURL: https://api.safaricom.co.ke
+  properties:
+  - url: https://developer.safaricom.co.ke/APIs/Authorization
+    type: Documentation
+  - url: openapi/mpesa-openapi.yml
+    type: OpenAPI
+  - url: collections/mpesa.postman_collection.json
+    type: PostmanCollection
+  description: Mints a short-lived OAuth access token from Basic-authenticated consumer
+    key and secret via GET /oauth/v1/generate?grant_type=client_credentials; the token
+    is used as a Bearer credential on all other Daraja calls.
+- aid: mpesa:mpesa-express-stk-push-api
+  name: M-Pesa Express (STK Push) API
+  tags:
+  - STK Push
+  - Lipa Na M-Pesa
+  - Collections
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developer.safaricom.co.ke/APIs/MpesaExpressSimulate
+  baseURL: https://api.safaricom.co.ke
+  properties:
+  - url: https://developer.safaricom.co.ke/APIs/MpesaExpressSimulate
+    type: Documentation
+  - url: openapi/mpesa-openapi.yml
+    type: OpenAPI
+  - url: collections/mpesa.postman_collection.json
+    type: PostmanCollection
+  description: M-Pesa Express, formally Lipa Na M-Pesa Online (STK Push — SIM Toolkit
+    prompt), pushes a PIN-entry prompt to a customer's phone to authorize a paybill/till
+    payment, plus a query endpoint to check the resulting transaction status.
+- aid: mpesa:mpesa-c2b-api
+  name: M-Pesa Customer To Business (C2B) API
+  tags:
+  - C2B
+  - Collections
+  - Paybill
+  - Till
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developer.safaricom.co.ke/APIs/CustomerToBusinessRegisterURL
+  baseURL: https://api.safaricom.co.ke
+  properties:
+  - url: https://developer.safaricom.co.ke/APIs/CustomerToBusinessRegisterURL
+    type: Documentation
+  - url: openapi/mpesa-openapi.yml
+    type: OpenAPI
+  - url: collections/mpesa.postman_collection.json
+    type: PostmanCollection
+  description: Customer To Business lets customers pay a business paybill or till number
+    from M-Pesa; register validation and confirmation callback URLs, and (in sandbox)
+    simulate inbound payments.
+- aid: mpesa:mpesa-b2c-api
+  name: M-Pesa Business To Customer (B2C) API
+  tags:
+  - B2C
+  - Payouts
+  - Disbursement
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developer.safaricom.co.ke/APIs/BusinessToCustomer
+  baseURL: https://api.safaricom.co.ke
+  properties:
+  - url: https://developer.safaricom.co.ke/APIs/BusinessToCustomer
+    type: Documentation
+  - url: openapi/mpesa-openapi.yml
+    type: OpenAPI
+  - url: collections/mpesa.postman_collection.json
+    type: PostmanCollection
+  description: Business To Customer disburses funds from a business shortcode to customer
+    M-Pesa wallets — salaries, supplier payments, winnings, refunds — with results
+    returned asynchronously to a registered callback URL.
+- aid: mpesa:mpesa-b2b-api
+  name: M-Pesa Business To Business (B2B) API
+  tags:
+  - B2B
+  - Merchant Payments
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developer.safaricom.co.ke/APIs/BusinessPayBill
+  baseURL: https://api.safaricom.co.ke
+  properties:
+  - url: https://developer.safaricom.co.ke/APIs/BusinessPayBill
+    type: Documentation
+  - url: openapi/mpesa-openapi.yml
+    type: OpenAPI
+  - url: collections/mpesa.postman_collection.json
+    type: PostmanCollection
+  description: Business To Business moves funds between business shortcodes (paybill
+    to paybill / till), including buy-goods and pay-bill merchant-to-merchant transfers.
+- aid: mpesa:mpesa-b2b-express-checkout-api
+  name: M-Pesa B2B Express Checkout (USSD Push) API
+  tags:
+  - B2B Express
+  - USSD Push
+  - Checkout
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developer.safaricom.co.ke/APIs/B2BExpressCheckout
+  baseURL: https://api.safaricom.co.ke
+  properties:
+  - url: https://developer.safaricom.co.ke/APIs/B2BExpressCheckout
+    type: Documentation
+  - url: openapi/mpesa-openapi.yml
+    type: OpenAPI
+  - url: collections/mpesa.postman_collection.json
+    type: PostmanCollection
+  description: B2B Express Checkout triggers a USSD push to a paying merchant's till
+    operator to authorize a till-to-paybill payment on the spot.
+- aid: mpesa:mpesa-transaction-status-api
+  name: M-Pesa Transaction Status API
+  tags:
+  - Transaction Status
+  - Query
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developer.safaricom.co.ke/APIs/TransactionStatus
+  baseURL: https://api.safaricom.co.ke
+  properties:
+  - url: https://developer.safaricom.co.ke/APIs/TransactionStatus
+    type: Documentation
+  - url: openapi/mpesa-openapi.yml
+    type: OpenAPI
+  - url: collections/mpesa.postman_collection.json
+    type: PostmanCollection
+  description: Checks the status of a completed M-Pesa transaction by transaction ID
+    or originator conversation ID; results are delivered to a result callback URL.
+- aid: mpesa:mpesa-account-balance-api
+  name: M-Pesa Account Balance API
+  tags:
+  - Account Balance
+  - Query
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developer.safaricom.co.ke/APIs/AccountBalance
+  baseURL: https://api.safaricom.co.ke
+  properties:
+  - url: https://developer.safaricom.co.ke/APIs/AccountBalance
+    type: Documentation
+  - url: openapi/mpesa-openapi.yml
+    type: OpenAPI
+  - url: collections/mpesa.postman_collection.json
+    type: PostmanCollection
+  description: Queries the available and working balance of a business M-Pesa shortcode;
+    results are returned asynchronously to a registered result URL.
+- aid: mpesa:mpesa-reversal-api
+  name: M-Pesa Reversal API
+  tags:
+  - Reversal
+  - Refund
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developer.safaricom.co.ke/APIs/Reversal
+  baseURL: https://api.safaricom.co.ke
+  properties:
+  - url: https://developer.safaricom.co.ke/APIs/Reversal
+    type: Documentation
+  - url: openapi/mpesa-openapi.yml
+    type: OpenAPI
+  - url: collections/mpesa.postman_collection.json
+    type: PostmanCollection
+  description: Reverses an M-Pesa transaction, returning funds from a business shortcode
+    back to the originating party; the outcome is posted to a result callback URL.
+- aid: mpesa:mpesa-dynamic-qr-api
+  name: M-Pesa Dynamic QR Code API
+  tags:
+  - QR Code
+  - Payments
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developer.safaricom.co.ke/APIs/DynamicQRCode
+  baseURL: https://api.safaricom.co.ke
+  properties:
+  - url: https://developer.safaricom.co.ke/APIs/DynamicQRCode
+    type: Documentation
+  - url: openapi/mpesa-openapi.yml
+    type: OpenAPI
+  - url: collections/mpesa.postman_collection.json
+    type: PostmanCollection
+  description: Generates a dynamic M-Pesa QR code encoding a merchant, amount, and
+    reference that a customer scans in the M-Pesa app to pay.
+- aid: mpesa:mpesa-tax-remittance-api
+  name: M-Pesa Tax Remittance API
+  tags:
+  - Tax
+  - Remittance
+  - KRA
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developer.safaricom.co.ke/APIs/TaxRemittance
+  baseURL: https://api.safaricom.co.ke
+  properties:
+  - url: https://developer.safaricom.co.ke/APIs/TaxRemittance
+    type: Documentation
+  - url: openapi/mpesa-openapi.yml
+    type: OpenAPI
+  - url: collections/mpesa.postman_collection.json
+    type: PostmanCollection
+  description: Remits taxes from a business shortcode to the Kenya Revenue Authority
+    (KRA) via the M-Pesa B2B tax-remittance rails.
+- aid: mpesa:mpesa-bill-manager-api
+  name: M-Pesa Bill Manager API
+  tags:
+  - Bill Manager
+  - Invoicing
+  - Reconciliation
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developer.safaricom.co.ke/APIs/BillManager
+  baseURL: https://api.safaricom.co.ke
+  properties:
+  - url: https://developer.safaricom.co.ke/APIs/BillManager
+    type: Documentation
+  - url: openapi/mpesa-openapi.yml
+    type: OpenAPI
+  - url: collections/mpesa.postman_collection.json
+    type: PostmanCollection
+  description: Bill Manager lets billers onboard, send e-invoices and payment reminders,
+    and reconcile customer bill payments through M-Pesa.
+- aid: mpesa:mpesa-ratiba-standing-order-api
+  name: M-Pesa Ratiba (Standing Order) API
+  tags:
+  - Ratiba
+  - Standing Order
+  - Recurring
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developer.safaricom.co.ke/APIs/MpesaRatiba
+  baseURL: https://api.safaricom.co.ke
+  properties:
+  - url: https://developer.safaricom.co.ke/APIs/MpesaRatiba
+    type: Documentation
+  - url: openapi/mpesa-openapi.yml
+    type: OpenAPI
+  - url: collections/mpesa.postman_collection.json
+    type: PostmanCollection
+  description: M-Pesa Ratiba creates external standing orders that automatically
+    collect recurring payments from a customer on a defined schedule.
+common:
+- type: AgenticAccess
+  url: agentic-access/mpesa-agentic-access.yml
+- type: TrustCenter
+  url: security/mpesa-trust-center.yml
+- type: VulnerabilityDisclosure
+  url: security/mpesa-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/mpesa-domain-security.yml
+- type: Authentication
+  url: authentication/mpesa-authentication.yml
+- type: GitHubOrganization
+  url: https://github.com/safaricom
+- type: Website
+  url: https://developer.safaricom.co.ke/
+- type: Documentation
+  url: https://developer.safaricom.co.ke/APIs
+- type: Plans
+  url: plans/mpesa-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/mpesa-rate-limits.yml
+- type: FinOps
+  url: finops/mpesa-finops.yml
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

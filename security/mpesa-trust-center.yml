@@ -1,0 +1,27 @@
+generated: '2026-07-17'
+method: searched
+probe: true
+source: https://www.safaricom.co.ke/
+url: https://www.safaricom.co.ke/data-privacy-statements
+certifications:
+- PCI DSS v4
+- ISO/IEC 27001
+- ISO/IEC 27701
+- GDPR-aligned / Kenya Data Protection Act 2019
+evidence:
+- source: https://www.safaricom.co.ke/media-center-landing/press-releases/safaricom-awarded-the-highest-certification-in-privacy-information-system-management
+  keywords:
+  - iso 27701
+  - privacy information management
+  - m-pesa
+- source: https://www.safaricom.co.ke/data-privacy-statements
+  keywords:
+  - data privacy
+  - encryption
+  - audits
+notes: >-
+  Safaricom (M-Pesa operator) holds PCI DSS v4, ISO/IEC 27001, and ISO/IEC 27701
+  certifications and is regulated under Kenya's Data Protection Act 2019. M-Pesa is
+  also supervised by the Central Bank of Kenya. The Daraja platform enforces
+  application-layer credential encryption (RSA against the M-Pesa public certificate)
+  for privileged operations.

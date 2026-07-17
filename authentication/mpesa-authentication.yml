@@ -1,0 +1,37 @@
+generated: '2026-07-17'
+method: derived
+source: openapi/mpesa-openapi.yml
+summary:
+  types:
+  - http
+notes: >-
+  Two-step auth. (1) Mint an OAuth access token: GET /oauth/v1/generate?grant_type=client_credentials
+  authenticated with HTTP Basic (consumer key as username, consumer secret as password). The
+  response access_token (valid ~3599s) is then presented as a Bearer token on every other Daraja
+  call. (2) Privileged funds-movement operations (B2C, B2B, Reversal, Account Balance,
+  Transaction Status, Tax Remittance) additionally require a SecurityCredential field: the API
+  initiator's password encrypted with Safaricom's M-Pesa public X.509 certificate (RSA), plus
+  STK Push requires a Base64 Password = Base64(Shortcode + Passkey + Timestamp).
+schemes:
+- name: basic_auth
+  type: http
+  scheme: basic
+  description: Consumer key/secret Basic auth used only against /oauth/v1/generate to obtain a token.
+  sources:
+  - openapi/mpesa-openapi.yml
+- name: bearer_token
+  type: http
+  scheme: bearer
+  bearerFormat: OAuth access token
+  description: Short-lived OAuth access token presented on all M-Pesa product endpoints.
+  sources:
+  - openapi/mpesa-openapi.yml
+- name: security_credential
+  type: apiKey
+  in: body
+  description: >-
+    Region-specific application-layer credential. Initiator password RSA-encrypted with the
+    M-Pesa public certificate, sent in the SecurityCredential request field on privileged
+    B2C/B2B/Reversal/Balance/Status operations.
+  sources:
+  - openapi/mpesa-openapi.yml
