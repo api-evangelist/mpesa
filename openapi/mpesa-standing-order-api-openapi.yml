@@ -1,0 +1,47 @@
+openapi: 3.0.3
+info:
+  title: M-Pesa Daraja Account Balance Standing Order API
+  description: 'Safaricom Daraja REST APIs for the M-Pesa mobile-money platform in Kenya: authorization, M-Pesa Express (STK Push), C2B, B2C, B2B, B2B Express Checkout, transaction status, account balance, reversal, dynamic QR, tax remittance and standing orders (M-Pesa Ratiba). Modeled from public Daraja documentation.'
+  version: '1.0'
+  termsOfService: https://developer.safaricom.co.ke/
+  contact:
+    name: Safaricom Daraja Support
+    url: https://developer.safaricom.co.ke/
+servers:
+- url: https://api.safaricom.co.ke
+  description: Production
+- url: https://sandbox.safaricom.co.ke
+  description: Sandbox
+security:
+- bearerAuth: []
+tags:
+- name: Standing Order
+paths:
+  /standingorder/v1/createStandingOrderExternal:
+    post:
+      operationId: createStandingOrder
+      tags:
+      - Standing Order
+      summary: Create an M-Pesa Ratiba external standing order.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: OAuth access token from /oauth/v1/generate
+    basicAuth:
+      type: http
+      scheme: basic

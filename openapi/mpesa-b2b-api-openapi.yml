@@ -1,0 +1,121 @@
+openapi: 3.0.3
+info:
+  title: M-Pesa Daraja Account Balance B2B API
+  description: 'Safaricom Daraja REST APIs for the M-Pesa mobile-money platform in Kenya: authorization, M-Pesa Express (STK Push), C2B, B2C, B2B, B2B Express Checkout, transaction status, account balance, reversal, dynamic QR, tax remittance and standing orders (M-Pesa Ratiba). Modeled from public Daraja documentation.'
+  version: '1.0'
+  termsOfService: https://developer.safaricom.co.ke/
+  contact:
+    name: Safaricom Daraja Support
+    url: https://developer.safaricom.co.ke/
+servers:
+- url: https://api.safaricom.co.ke
+  description: Production
+- url: https://sandbox.safaricom.co.ke
+  description: Sandbox
+security:
+- bearerAuth: []
+tags:
+- name: B2B
+paths:
+  /mpesa/b2b/v1/paymentrequest:
+    post:
+      operationId: b2bPaymentRequest
+      tags:
+      - B2B
+      summary: Move funds between two business shortcodes.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/B2BRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AsyncAckResponse'
+  /v1/ussdpush/get-msisdn:
+    post:
+      operationId: b2bExpressCheckout
+      tags:
+      - B2B
+      summary: Trigger a B2B Express Checkout USSD push to a till operator.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+components:
+  schemas:
+    B2BRequest:
+      type: object
+      required:
+      - Initiator
+      - SecurityCredential
+      - CommandID
+      - Amount
+      - PartyA
+      - PartyB
+      - QueueTimeOutURL
+      - ResultURL
+      properties:
+        Initiator:
+          type: string
+        SecurityCredential:
+          type: string
+        CommandID:
+          type: string
+          enum:
+          - BusinessPayBill
+          - BusinessBuyGoods
+          - MerchantToMerchantTransfer
+        SenderIdentifierType:
+          type: string
+        RecieverIdentifierType:
+          type: string
+        Amount:
+          type: integer
+        PartyA:
+          type: string
+        PartyB:
+          type: string
+        AccountReference:
+          type: string
+        Remarks:
+          type: string
+        QueueTimeOutURL:
+          type: string
+          format: uri
+        ResultURL:
+          type: string
+          format: uri
+    AsyncAckResponse:
+      type: object
+      description: Synchronous acknowledgement; the real result is POSTed to ResultURL.
+      properties:
+        OriginatorConversationID:
+          type: string
+        ConversationID:
+          type: string
+        ResponseCode:
+          type: string
+        ResponseDescription:
+          type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: OAuth access token from /oauth/v1/generate
+    basicAuth:
+      type: http
+      scheme: basic

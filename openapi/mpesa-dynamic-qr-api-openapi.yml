@@ -1,0 +1,65 @@
+openapi: 3.0.3
+info:
+  title: M-Pesa Daraja Account Balance Dynamic QR API
+  description: 'Safaricom Daraja REST APIs for the M-Pesa mobile-money platform in Kenya: authorization, M-Pesa Express (STK Push), C2B, B2C, B2B, B2B Express Checkout, transaction status, account balance, reversal, dynamic QR, tax remittance and standing orders (M-Pesa Ratiba). Modeled from public Daraja documentation.'
+  version: '1.0'
+  termsOfService: https://developer.safaricom.co.ke/
+  contact:
+    name: Safaricom Daraja Support
+    url: https://developer.safaricom.co.ke/
+servers:
+- url: https://api.safaricom.co.ke
+  description: Production
+- url: https://sandbox.safaricom.co.ke
+  description: Sandbox
+security:
+- bearerAuth: []
+tags:
+- name: Dynamic QR
+paths:
+  /mpesa/qrcode/v1/generate:
+    post:
+      operationId: dynamicQR
+      tags:
+      - Dynamic QR
+      summary: Generate a dynamic M-Pesa QR code.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DynamicQRRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+components:
+  schemas:
+    DynamicQRRequest:
+      type: object
+      properties:
+        MerchantName:
+          type: string
+        RefNo:
+          type: string
+        Amount:
+          type: integer
+        TrxCode:
+          type: string
+          description: BG=Buy Goods, PB=Paybill, WA=Withdraw, SB=Send to Business, SM=Send Money.
+        CPI:
+          type: string
+          description: Credit Party Identifier (till/paybill/agent number).
+        Size:
+          type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: OAuth access token from /oauth/v1/generate
+    basicAuth:
+      type: http
+      scheme: basic

@@ -1,0 +1,82 @@
+openapi: 3.0.3
+info:
+  title: M-Pesa Daraja Account Balance API
+  description: 'Safaricom Daraja REST APIs for the M-Pesa mobile-money platform in Kenya: authorization, M-Pesa Express (STK Push), C2B, B2C, B2B, B2B Express Checkout, transaction status, account balance, reversal, dynamic QR, tax remittance and standing orders (M-Pesa Ratiba). Modeled from public Daraja documentation.'
+  version: '1.0'
+  termsOfService: https://developer.safaricom.co.ke/
+  contact:
+    name: Safaricom Daraja Support
+    url: https://developer.safaricom.co.ke/
+servers:
+- url: https://api.safaricom.co.ke
+  description: Production
+- url: https://sandbox.safaricom.co.ke
+  description: Sandbox
+security:
+- bearerAuth: []
+tags:
+- name: Account Balance
+paths:
+  /mpesa/accountbalance/v1/query:
+    post:
+      operationId: accountBalance
+      tags:
+      - Account Balance
+      summary: Query the balance of a business shortcode.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccountBalanceRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AsyncAckResponse'
+components:
+  schemas:
+    AccountBalanceRequest:
+      type: object
+      properties:
+        Initiator:
+          type: string
+        SecurityCredential:
+          type: string
+        CommandID:
+          type: string
+          default: AccountBalance
+        PartyA:
+          type: string
+        IdentifierType:
+          type: string
+        Remarks:
+          type: string
+        QueueTimeOutURL:
+          type: string
+          format: uri
+        ResultURL:
+          type: string
+          format: uri
+    AsyncAckResponse:
+      type: object
+      description: Synchronous acknowledgement; the real result is POSTed to ResultURL.
+      properties:
+        OriginatorConversationID:
+          type: string
+        ConversationID:
+          type: string
+        ResponseCode:
+          type: string
+        ResponseDescription:
+          type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: OAuth access token from /oauth/v1/generate
+    basicAuth:
+      type: http
+      scheme: basic

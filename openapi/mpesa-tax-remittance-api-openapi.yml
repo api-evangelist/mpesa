@@ -1,0 +1,92 @@
+openapi: 3.0.3
+info:
+  title: M-Pesa Daraja Account Balance Tax Remittance API
+  description: 'Safaricom Daraja REST APIs for the M-Pesa mobile-money platform in Kenya: authorization, M-Pesa Express (STK Push), C2B, B2C, B2B, B2B Express Checkout, transaction status, account balance, reversal, dynamic QR, tax remittance and standing orders (M-Pesa Ratiba). Modeled from public Daraja documentation.'
+  version: '1.0'
+  termsOfService: https://developer.safaricom.co.ke/
+  contact:
+    name: Safaricom Daraja Support
+    url: https://developer.safaricom.co.ke/
+servers:
+- url: https://api.safaricom.co.ke
+  description: Production
+- url: https://sandbox.safaricom.co.ke
+  description: Sandbox
+security:
+- bearerAuth: []
+tags:
+- name: Tax Remittance
+paths:
+  /mpesa/b2b/v1/remittax:
+    post:
+      operationId: taxRemittance
+      tags:
+      - Tax Remittance
+      summary: Remit taxes to the Kenya Revenue Authority (KRA).
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TaxRemittanceRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AsyncAckResponse'
+components:
+  schemas:
+    TaxRemittanceRequest:
+      type: object
+      properties:
+        Initiator:
+          type: string
+        SecurityCredential:
+          type: string
+        CommandID:
+          type: string
+          default: PayTaxToKRA
+        SenderIdentifierType:
+          type: string
+        RecieverIdentifierType:
+          type: string
+        Amount:
+          type: integer
+        PartyA:
+          type: string
+        PartyB:
+          type: string
+          description: KRA receiver shortcode.
+        AccountReference:
+          type: string
+          description: Payment Registration Number (PRN) from KRA.
+        Remarks:
+          type: string
+        QueueTimeOutURL:
+          type: string
+          format: uri
+        ResultURL:
+          type: string
+          format: uri
+    AsyncAckResponse:
+      type: object
+      description: Synchronous acknowledgement; the real result is POSTed to ResultURL.
+      properties:
+        OriginatorConversationID:
+          type: string
+        ConversationID:
+          type: string
+        ResponseCode:
+          type: string
+        ResponseDescription:
+          type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: OAuth access token from /oauth/v1/generate
+    basicAuth:
+      type: http
+      scheme: basic

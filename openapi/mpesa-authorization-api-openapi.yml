@@ -1,0 +1,60 @@
+openapi: 3.0.3
+info:
+  title: M-Pesa Daraja Account Balance Authorization API
+  description: 'Safaricom Daraja REST APIs for the M-Pesa mobile-money platform in Kenya: authorization, M-Pesa Express (STK Push), C2B, B2C, B2B, B2B Express Checkout, transaction status, account balance, reversal, dynamic QR, tax remittance and standing orders (M-Pesa Ratiba). Modeled from public Daraja documentation.'
+  version: '1.0'
+  termsOfService: https://developer.safaricom.co.ke/
+  contact:
+    name: Safaricom Daraja Support
+    url: https://developer.safaricom.co.ke/
+servers:
+- url: https://api.safaricom.co.ke
+  description: Production
+- url: https://sandbox.safaricom.co.ke
+  description: Sandbox
+security:
+- bearerAuth: []
+tags:
+- name: Authorization
+paths:
+  /oauth/v1/generate:
+    get:
+      operationId: generateAccessToken
+      tags:
+      - Authorization
+      summary: Generate an OAuth access token.
+      description: Returns a short-lived (typically 3599s) OAuth access token. Authenticate with HTTP Basic using the app consumer key as username and consumer secret as password.
+      security:
+      - basicAuth: []
+      parameters:
+      - name: grant_type
+        in: query
+        required: true
+        schema:
+          type: string
+          default: client_credentials
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccessTokenResponse'
+components:
+  schemas:
+    AccessTokenResponse:
+      type: object
+      properties:
+        access_token:
+          type: string
+        expires_in:
+          type: string
+          example: '3599'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: OAuth access token from /oauth/v1/generate
+    basicAuth:
+      type: http
+      scheme: basic

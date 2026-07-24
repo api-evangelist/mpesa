@@ -1,0 +1,143 @@
+openapi: 3.0.3
+info:
+  title: M-Pesa Daraja Account Balance M-Pesa Express API
+  description: 'Safaricom Daraja REST APIs for the M-Pesa mobile-money platform in Kenya: authorization, M-Pesa Express (STK Push), C2B, B2C, B2B, B2B Express Checkout, transaction status, account balance, reversal, dynamic QR, tax remittance and standing orders (M-Pesa Ratiba). Modeled from public Daraja documentation.'
+  version: '1.0'
+  termsOfService: https://developer.safaricom.co.ke/
+  contact:
+    name: Safaricom Daraja Support
+    url: https://developer.safaricom.co.ke/
+servers:
+- url: https://api.safaricom.co.ke
+  description: Production
+- url: https://sandbox.safaricom.co.ke
+  description: Sandbox
+security:
+- bearerAuth: []
+tags:
+- name: M-Pesa Express
+paths:
+  /mpesa/stkpush/v1/processrequest:
+    post:
+      operationId: stkPush
+      tags:
+      - M-Pesa Express
+      summary: Initiate an M-Pesa Express (STK Push) payment prompt.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/STKPushRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/STKPushResponse'
+  /mpesa/stkpushquery/v1/query:
+    post:
+      operationId: stkPushQuery
+      tags:
+      - M-Pesa Express
+      summary: Query the status of an STK Push request.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/STKQueryRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+components:
+  schemas:
+    STKQueryRequest:
+      type: object
+      required:
+      - BusinessShortCode
+      - Password
+      - Timestamp
+      - CheckoutRequestID
+      properties:
+        BusinessShortCode:
+          type: string
+        Password:
+          type: string
+        Timestamp:
+          type: string
+        CheckoutRequestID:
+          type: string
+    STKPushResponse:
+      type: object
+      properties:
+        MerchantRequestID:
+          type: string
+        CheckoutRequestID:
+          type: string
+        ResponseCode:
+          type: string
+        ResponseDescription:
+          type: string
+        CustomerMessage:
+          type: string
+    STKPushRequest:
+      type: object
+      required:
+      - BusinessShortCode
+      - Password
+      - Timestamp
+      - TransactionType
+      - Amount
+      - PartyA
+      - PartyB
+      - PhoneNumber
+      - CallBackURL
+      - AccountReference
+      - TransactionDesc
+      properties:
+        BusinessShortCode:
+          type: string
+          example: '174379'
+        Password:
+          type: string
+          description: Base64(Shortcode + Passkey + Timestamp).
+        Timestamp:
+          type: string
+          example: '20260717120000'
+        TransactionType:
+          type: string
+          enum:
+          - CustomerPayBillOnline
+          - CustomerBuyGoodsOnline
+        Amount:
+          type: integer
+          description: Amount in KES.
+          example: 100
+        PartyA:
+          type: string
+          description: Payer MSISDN (2547XXXXXXXX).
+        PartyB:
+          type: string
+        PhoneNumber:
+          type: string
+        CallBackURL:
+          type: string
+          format: uri
+        AccountReference:
+          type: string
+        TransactionDesc:
+          type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: OAuth access token from /oauth/v1/generate
+    basicAuth:
+      type: http
+      scheme: basic

@@ -1,0 +1,86 @@
+openapi: 3.0.3
+info:
+  title: M-Pesa Daraja Account Balance Transaction Status API
+  description: 'Safaricom Daraja REST APIs for the M-Pesa mobile-money platform in Kenya: authorization, M-Pesa Express (STK Push), C2B, B2C, B2B, B2B Express Checkout, transaction status, account balance, reversal, dynamic QR, tax remittance and standing orders (M-Pesa Ratiba). Modeled from public Daraja documentation.'
+  version: '1.0'
+  termsOfService: https://developer.safaricom.co.ke/
+  contact:
+    name: Safaricom Daraja Support
+    url: https://developer.safaricom.co.ke/
+servers:
+- url: https://api.safaricom.co.ke
+  description: Production
+- url: https://sandbox.safaricom.co.ke
+  description: Sandbox
+security:
+- bearerAuth: []
+tags:
+- name: Transaction Status
+paths:
+  /mpesa/transactionstatus/v1/query:
+    post:
+      operationId: transactionStatus
+      tags:
+      - Transaction Status
+      summary: Query the status of an M-Pesa transaction.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TransactionStatusRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AsyncAckResponse'
+components:
+  schemas:
+    TransactionStatusRequest:
+      type: object
+      properties:
+        Initiator:
+          type: string
+        SecurityCredential:
+          type: string
+        CommandID:
+          type: string
+          default: TransactionStatusQuery
+        TransactionID:
+          type: string
+        PartyA:
+          type: string
+        IdentifierType:
+          type: string
+        ResultURL:
+          type: string
+          format: uri
+        QueueTimeOutURL:
+          type: string
+          format: uri
+        Remarks:
+          type: string
+        Occasion:
+          type: string
+    AsyncAckResponse:
+      type: object
+      description: Synchronous acknowledgement; the real result is POSTed to ResultURL.
+      properties:
+        OriginatorConversationID:
+          type: string
+        ConversationID:
+          type: string
+        ResponseCode:
+          type: string
+        ResponseDescription:
+          type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: OAuth access token from /oauth/v1/generate
+    basicAuth:
+      type: http
+      scheme: basic

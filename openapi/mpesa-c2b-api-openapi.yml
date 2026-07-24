@@ -1,0 +1,104 @@
+openapi: 3.0.3
+info:
+  title: M-Pesa Daraja Account Balance C2B API
+  description: 'Safaricom Daraja REST APIs for the M-Pesa mobile-money platform in Kenya: authorization, M-Pesa Express (STK Push), C2B, B2C, B2B, B2B Express Checkout, transaction status, account balance, reversal, dynamic QR, tax remittance and standing orders (M-Pesa Ratiba). Modeled from public Daraja documentation.'
+  version: '1.0'
+  termsOfService: https://developer.safaricom.co.ke/
+  contact:
+    name: Safaricom Daraja Support
+    url: https://developer.safaricom.co.ke/
+servers:
+- url: https://api.safaricom.co.ke
+  description: Production
+- url: https://sandbox.safaricom.co.ke
+  description: Sandbox
+security:
+- bearerAuth: []
+tags:
+- name: C2B
+paths:
+  /mpesa/c2b/v1/registerurl:
+    post:
+      operationId: c2bRegisterURL
+      tags:
+      - C2B
+      summary: Register C2B validation and confirmation callback URLs.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/C2BRegisterURLRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+  /mpesa/c2b/v1/simulate:
+    post:
+      operationId: c2bSimulate
+      tags:
+      - C2B
+      summary: Simulate an inbound C2B payment (sandbox only).
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/C2BSimulateRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+components:
+  schemas:
+    C2BRegisterURLRequest:
+      type: object
+      required:
+      - ShortCode
+      - ResponseType
+      - ConfirmationURL
+      - ValidationURL
+      properties:
+        ShortCode:
+          type: string
+        ResponseType:
+          type: string
+          enum:
+          - Completed
+          - Cancelled
+        ConfirmationURL:
+          type: string
+          format: uri
+        ValidationURL:
+          type: string
+          format: uri
+    C2BSimulateRequest:
+      type: object
+      properties:
+        ShortCode:
+          type: string
+        CommandID:
+          type: string
+          enum:
+          - CustomerPayBillOnline
+          - CustomerBuyGoodsOnline
+        Amount:
+          type: integer
+        Msisdn:
+          type: string
+        BillRefNumber:
+          type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: OAuth access token from /oauth/v1/generate
+    basicAuth:
+      type: http
+      scheme: basic
