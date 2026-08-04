@@ -1,0 +1,172 @@
+{
+  "info": {
+    "_postman_id": "8b661863-f0e3-4bba-b856-b3d758fd64c5",
+    "name": "M-Pesa Daraja Account Balance Dynamic QR API",
+    "description": "Safaricom Daraja REST APIs for the M-Pesa mobile-money platform in Kenya: authorization, M-Pesa Express (STK Push), C2B, B2C, B2B, B2B Express Checkout, transaction status, account balance, reversal, dynamic QR, tax remittance and standing orders (M-Pesa Ratiba). Modeled from public Daraja documentation.\n\nContact Support:\n Name: Safaricom Daraja Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:15:23.000Z",
+    "updatedAt": "2026-07-28T02:15:24.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-8b661863-f0e3-4bba-b856-b3d758fd64c5"
+  },
+  "item": [
+    {
+      "name": "mpesa",
+      "item": [
+        {
+          "name": "qrcode",
+          "item": [
+            {
+              "name": "v1",
+              "item": [
+                {
+                  "name": "generate",
+                  "item": [
+                    {
+                      "name": "Generate a dynamic M-Pesa QR code.",
+                      "id": "4122cf34-48c6-4ee3-a744-69ca0e02d65f",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"MerchantName\": \"<string>\",\n  \"RefNo\": \"<string>\",\n  \"Amount\": \"<integer>\",\n  \"TrxCode\": \"<string>\",\n  \"CPI\": \"<string>\",\n  \"Size\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/mpesa/qrcode/v1/generate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "mpesa",
+                            "qrcode",
+                            "v1",
+                            "generate"
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "005badb0-f1ba-42d9-becb-7cd516fd4f43",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"MerchantName\": \"<string>\",\n  \"RefNo\": \"<string>\",\n  \"Amount\": \"<integer>\",\n  \"TrxCode\": \"<string>\",\n  \"CPI\": \"<string>\",\n  \"Size\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/mpesa/qrcode/v1/generate",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "mpesa",
+                                "qrcode",
+                                "v1",
+                                "generate"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{}",
+                          "createdAt": "2026-07-28T02:15:24.000Z",
+                          "updatedAt": "2026-07-28T02:15:24.000Z",
+                          "uid": "35240-005badb0-f1ba-42d9-becb-7cd516fd4f43"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:15:24.000Z",
+                      "updatedAt": "2026-07-28T02:15:24.000Z",
+                      "uid": "35240-4122cf34-48c6-4ee3-a744-69ca0e02d65f"
+                    }
+                  ],
+                  "id": "d0d22622-f31d-409e-b111-ad0f12d1764c",
+                  "createdAt": "2026-07-28T02:15:24.000Z",
+                  "updatedAt": "2026-07-28T02:15:24.000Z",
+                  "uid": "35240-d0d22622-f31d-409e-b111-ad0f12d1764c"
+                }
+              ],
+              "id": "bc0a58d2-f3bb-49a9-af07-318903faac90",
+              "createdAt": "2026-07-28T02:15:24.000Z",
+              "updatedAt": "2026-07-28T02:15:24.000Z",
+              "uid": "35240-bc0a58d2-f3bb-49a9-af07-318903faac90"
+            }
+          ],
+          "id": "42003c61-fe89-46bb-8dc5-1f5fb533bbd5",
+          "createdAt": "2026-07-28T02:15:24.000Z",
+          "updatedAt": "2026-07-28T02:15:24.000Z",
+          "uid": "35240-42003c61-fe89-46bb-8dc5-1f5fb533bbd5"
+        }
+      ],
+      "id": "9a96f9bc-7f2d-4ff6-a849-753d2b5ecbe5",
+      "createdAt": "2026-07-28T02:15:24.000Z",
+      "updatedAt": "2026-07-28T02:15:24.000Z",
+      "uid": "35240-9a96f9bc-7f2d-4ff6-a849-753d2b5ecbe5"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.safaricom.co.ke"
+    }
+  ]
+}

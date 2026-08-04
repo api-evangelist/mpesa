@@ -1,0 +1,163 @@
+{
+  "info": {
+    "_postman_id": "a1c4076f-49c6-41f6-9116-3bc75eec23d0",
+    "name": "M-Pesa Daraja Account Balance Authorization API",
+    "description": "Safaricom Daraja REST APIs for the M-Pesa mobile-money platform in Kenya: authorization, M-Pesa Express (STK Push), C2B, B2C, B2B, B2B Express Checkout, transaction status, account balance, reversal, dynamic QR, tax remittance and standing orders (M-Pesa Ratiba). Modeled from public Daraja documentation.\n\nContact Support:\n Name: Safaricom Daraja Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:15:04.000Z",
+    "updatedAt": "2026-07-28T02:15:04.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-a1c4076f-49c6-41f6-9116-3bc75eec23d0"
+  },
+  "item": [
+    {
+      "name": "oauth",
+      "item": [
+        {
+          "name": "v1",
+          "item": [
+            {
+              "name": "generate",
+              "item": [
+                {
+                  "name": "Generate an OAuth access token.",
+                  "id": "dc1f4e31-619c-47a4-b32a-f912b92f7569",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "basic",
+                      "basic": [
+                        {
+                          "key": "username",
+                          "value": "{{basicAuthUsername}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "password",
+                          "value": "{{basicAuthPassword}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/oauth/v1/generate?grant_type=client_credentials",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "oauth",
+                        "v1",
+                        "generate"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) ",
+                          "key": "grant_type",
+                          "value": "client_credentials"
+                        }
+                      ]
+                    },
+                    "description": "Returns a short-lived (typically 3599s) OAuth access token. Authenticate with HTTP Basic using the app consumer key as username and consumer secret as password."
+                  },
+                  "response": [
+                    {
+                      "id": "fe8024d4-b317-4d85-8b90-07cb35febdce",
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/oauth/v1/generate?grant_type=client_credentials",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "oauth",
+                            "v1",
+                            "generate"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) ",
+                              "key": "grant_type",
+                              "value": "client_credentials"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"access_token\": \"<string>\",\n  \"expires_in\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:15:04.000Z",
+                      "updatedAt": "2026-07-28T02:15:04.000Z",
+                      "uid": "35240-fe8024d4-b317-4d85-8b90-07cb35febdce"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:15:04.000Z",
+                  "updatedAt": "2026-07-28T02:15:04.000Z",
+                  "uid": "35240-dc1f4e31-619c-47a4-b32a-f912b92f7569"
+                }
+              ],
+              "id": "52d0d5e3-e210-485e-90c7-10c09f4668d2",
+              "createdAt": "2026-07-28T02:15:04.000Z",
+              "updatedAt": "2026-07-28T02:15:04.000Z",
+              "uid": "35240-52d0d5e3-e210-485e-90c7-10c09f4668d2"
+            }
+          ],
+          "id": "000a04aa-ace7-4107-ae8c-2c8300c10bb0",
+          "createdAt": "2026-07-28T02:15:04.000Z",
+          "updatedAt": "2026-07-28T02:15:04.000Z",
+          "uid": "35240-000a04aa-ace7-4107-ae8c-2c8300c10bb0"
+        }
+      ],
+      "id": "f5e3b6b7-94c9-4f96-8ee0-42a5bc239db3",
+      "createdAt": "2026-07-28T02:15:04.000Z",
+      "updatedAt": "2026-07-28T02:15:04.000Z",
+      "uid": "35240-f5e3b6b7-94c9-4f96-8ee0-42a5bc239db3"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.safaricom.co.ke"
+    }
+  ]
+}

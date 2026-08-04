@@ -1,0 +1,303 @@
+{
+  "info": {
+    "_postman_id": "c371f4ef-c59a-4f10-bb69-f47dd2d60ca8",
+    "name": "M-Pesa Daraja Account Balance B2B API",
+    "description": "Safaricom Daraja REST APIs for the M-Pesa mobile-money platform in Kenya: authorization, M-Pesa Express (STK Push), C2B, B2C, B2B, B2B Express Checkout, transaction status, account balance, reversal, dynamic QR, tax remittance and standing orders (M-Pesa Ratiba). Modeled from public Daraja documentation.\n\nContact Support:\n Name: Safaricom Daraja Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:15:05.000Z",
+    "updatedAt": "2026-07-28T02:15:05.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-c371f4ef-c59a-4f10-bb69-f47dd2d60ca8"
+  },
+  "item": [
+    {
+      "name": "mpesa",
+      "item": [
+        {
+          "name": "b2b",
+          "item": [
+            {
+              "name": "v1",
+              "item": [
+                {
+                  "name": "paymentrequest",
+                  "item": [
+                    {
+                      "name": "Move funds between two business shortcodes.",
+                      "id": "641f8ff6-651b-4e6b-8bd2-9a1cea9a601b",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"Initiator\": \"<string>\",\n  \"SecurityCredential\": \"<string>\",\n  \"CommandID\": \"BusinessBuyGoods\",\n  \"Amount\": \"<integer>\",\n  \"PartyA\": \"<string>\",\n  \"PartyB\": \"<string>\",\n  \"QueueTimeOutURL\": \"<uri>\",\n  \"ResultURL\": \"<uri>\",\n  \"SenderIdentifierType\": \"<string>\",\n  \"RecieverIdentifierType\": \"<string>\",\n  \"AccountReference\": \"<string>\",\n  \"Remarks\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/mpesa/b2b/v1/paymentrequest",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "mpesa",
+                            "b2b",
+                            "v1",
+                            "paymentrequest"
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "ac890012-ba32-4916-be38-7eb61aa6e6ba",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"Initiator\": \"<string>\",\n  \"SecurityCredential\": \"<string>\",\n  \"CommandID\": \"BusinessBuyGoods\",\n  \"Amount\": \"<integer>\",\n  \"PartyA\": \"<string>\",\n  \"PartyB\": \"<string>\",\n  \"QueueTimeOutURL\": \"<uri>\",\n  \"ResultURL\": \"<uri>\",\n  \"SenderIdentifierType\": \"<string>\",\n  \"RecieverIdentifierType\": \"<string>\",\n  \"AccountReference\": \"<string>\",\n  \"Remarks\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/mpesa/b2b/v1/paymentrequest",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "mpesa",
+                                "b2b",
+                                "v1",
+                                "paymentrequest"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"OriginatorConversationID\": \"<string>\",\n  \"ConversationID\": \"<string>\",\n  \"ResponseCode\": \"<string>\",\n  \"ResponseDescription\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T02:15:05.000Z",
+                          "updatedAt": "2026-07-28T02:15:05.000Z",
+                          "uid": "35240-ac890012-ba32-4916-be38-7eb61aa6e6ba"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:15:05.000Z",
+                      "updatedAt": "2026-07-28T02:15:05.000Z",
+                      "uid": "35240-641f8ff6-651b-4e6b-8bd2-9a1cea9a601b"
+                    }
+                  ],
+                  "id": "4b81e69f-3fde-4ff8-a544-6e691628c599",
+                  "createdAt": "2026-07-28T02:15:05.000Z",
+                  "updatedAt": "2026-07-28T02:15:05.000Z",
+                  "uid": "35240-4b81e69f-3fde-4ff8-a544-6e691628c599"
+                }
+              ],
+              "id": "25de8d53-19f8-47fa-b886-7f92f1374686",
+              "createdAt": "2026-07-28T02:15:05.000Z",
+              "updatedAt": "2026-07-28T02:15:05.000Z",
+              "uid": "35240-25de8d53-19f8-47fa-b886-7f92f1374686"
+            }
+          ],
+          "id": "4b5d8900-7f57-4dea-8402-785f995d5e60",
+          "createdAt": "2026-07-28T02:15:05.000Z",
+          "updatedAt": "2026-07-28T02:15:05.000Z",
+          "uid": "35240-4b5d8900-7f57-4dea-8402-785f995d5e60"
+        }
+      ],
+      "id": "61900e8c-dcb8-4f47-a6e9-69522fb6b5cf",
+      "createdAt": "2026-07-28T02:15:05.000Z",
+      "updatedAt": "2026-07-28T02:15:05.000Z",
+      "uid": "35240-61900e8c-dcb8-4f47-a6e9-69522fb6b5cf"
+    },
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "ussdpush",
+          "item": [
+            {
+              "name": "get-msisdn",
+              "item": [
+                {
+                  "name": "Trigger a B2B Express Checkout USSD push to a till operator.",
+                  "id": "f5ed4bc6-8722-4ba5-ac54-34c20c39f12d",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/ussdpush/get-msisdn",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "ussdpush",
+                        "get-msisdn"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "18164a5f-3cfe-4a30-a82d-548d3f7ca67c",
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/ussdpush/get-msisdn",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "ussdpush",
+                            "get-msisdn"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{}",
+                      "createdAt": "2026-07-28T02:15:05.000Z",
+                      "updatedAt": "2026-07-28T02:15:05.000Z",
+                      "uid": "35240-18164a5f-3cfe-4a30-a82d-548d3f7ca67c"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:15:05.000Z",
+                  "updatedAt": "2026-07-28T02:15:05.000Z",
+                  "uid": "35240-f5ed4bc6-8722-4ba5-ac54-34c20c39f12d"
+                }
+              ],
+              "id": "7850dd4b-a013-4c46-81fb-bfe68a8d7bee",
+              "createdAt": "2026-07-28T02:15:05.000Z",
+              "updatedAt": "2026-07-28T02:15:05.000Z",
+              "uid": "35240-7850dd4b-a013-4c46-81fb-bfe68a8d7bee"
+            }
+          ],
+          "id": "f1f12785-7e00-40e0-8f9d-ef8e88663b72",
+          "createdAt": "2026-07-28T02:15:05.000Z",
+          "updatedAt": "2026-07-28T02:15:05.000Z",
+          "uid": "35240-f1f12785-7e00-40e0-8f9d-ef8e88663b72"
+        }
+      ],
+      "id": "cb4a2949-a708-4fc6-a703-eeb738637e87",
+      "createdAt": "2026-07-28T02:15:05.000Z",
+      "updatedAt": "2026-07-28T02:15:05.000Z",
+      "uid": "35240-cb4a2949-a708-4fc6-a703-eeb738637e87"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.safaricom.co.ke"
+    }
+  ]
+}

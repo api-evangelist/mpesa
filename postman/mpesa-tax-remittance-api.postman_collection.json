@@ -1,0 +1,172 @@
+{
+  "info": {
+    "_postman_id": "58a25ab5-ad14-4327-861b-970a7b1db758",
+    "name": "M-Pesa Daraja Account Balance Tax Remittance API",
+    "description": "Safaricom Daraja REST APIs for the M-Pesa mobile-money platform in Kenya: authorization, M-Pesa Express (STK Push), C2B, B2C, B2B, B2B Express Checkout, transaction status, account balance, reversal, dynamic QR, tax remittance and standing orders (M-Pesa Ratiba). Modeled from public Daraja documentation.\n\nContact Support:\n Name: Safaricom Daraja Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:15:28.000Z",
+    "updatedAt": "2026-07-28T02:15:29.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-58a25ab5-ad14-4327-861b-970a7b1db758"
+  },
+  "item": [
+    {
+      "name": "mpesa",
+      "item": [
+        {
+          "name": "b2b",
+          "item": [
+            {
+              "name": "v1",
+              "item": [
+                {
+                  "name": "remittax",
+                  "item": [
+                    {
+                      "name": "Remit taxes to the Kenya Revenue Authority (KRA).",
+                      "id": "68ad9dc3-132e-4158-8c61-4d575cfc8350",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"Initiator\": \"<string>\",\n  \"SecurityCredential\": \"<string>\",\n  \"CommandID\": \"PayTaxToKRA\",\n  \"SenderIdentifierType\": \"<string>\",\n  \"RecieverIdentifierType\": \"<string>\",\n  \"Amount\": \"<integer>\",\n  \"PartyA\": \"<string>\",\n  \"PartyB\": \"<string>\",\n  \"AccountReference\": \"<string>\",\n  \"Remarks\": \"<string>\",\n  \"QueueTimeOutURL\": \"<uri>\",\n  \"ResultURL\": \"<uri>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/mpesa/b2b/v1/remittax",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "mpesa",
+                            "b2b",
+                            "v1",
+                            "remittax"
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "4ef70156-b3df-4ac7-bbf6-1bc52a027a3e",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"Initiator\": \"<string>\",\n  \"SecurityCredential\": \"<string>\",\n  \"CommandID\": \"PayTaxToKRA\",\n  \"SenderIdentifierType\": \"<string>\",\n  \"RecieverIdentifierType\": \"<string>\",\n  \"Amount\": \"<integer>\",\n  \"PartyA\": \"<string>\",\n  \"PartyB\": \"<string>\",\n  \"AccountReference\": \"<string>\",\n  \"Remarks\": \"<string>\",\n  \"QueueTimeOutURL\": \"<uri>\",\n  \"ResultURL\": \"<uri>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/mpesa/b2b/v1/remittax",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "mpesa",
+                                "b2b",
+                                "v1",
+                                "remittax"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"OriginatorConversationID\": \"<string>\",\n  \"ConversationID\": \"<string>\",\n  \"ResponseCode\": \"<string>\",\n  \"ResponseDescription\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T02:15:29.000Z",
+                          "updatedAt": "2026-07-28T02:15:29.000Z",
+                          "uid": "35240-4ef70156-b3df-4ac7-bbf6-1bc52a027a3e"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:15:29.000Z",
+                      "updatedAt": "2026-07-28T02:15:29.000Z",
+                      "uid": "35240-68ad9dc3-132e-4158-8c61-4d575cfc8350"
+                    }
+                  ],
+                  "id": "a940b85f-5152-4419-9a94-ba67c754fe36",
+                  "createdAt": "2026-07-28T02:15:29.000Z",
+                  "updatedAt": "2026-07-28T02:15:29.000Z",
+                  "uid": "35240-a940b85f-5152-4419-9a94-ba67c754fe36"
+                }
+              ],
+              "id": "dcdb8482-b82f-4855-96c9-a33f2bb7940e",
+              "createdAt": "2026-07-28T02:15:29.000Z",
+              "updatedAt": "2026-07-28T02:15:29.000Z",
+              "uid": "35240-dcdb8482-b82f-4855-96c9-a33f2bb7940e"
+            }
+          ],
+          "id": "43bffa25-9faa-40ed-8d33-3ad38d3c7a7e",
+          "createdAt": "2026-07-28T02:15:29.000Z",
+          "updatedAt": "2026-07-28T02:15:29.000Z",
+          "uid": "35240-43bffa25-9faa-40ed-8d33-3ad38d3c7a7e"
+        }
+      ],
+      "id": "d3c027d5-08da-46df-a49d-a15abafc2de7",
+      "createdAt": "2026-07-28T02:15:29.000Z",
+      "updatedAt": "2026-07-28T02:15:29.000Z",
+      "uid": "35240-d3c027d5-08da-46df-a49d-a15abafc2de7"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.safaricom.co.ke"
+    }
+  ]
+}

@@ -1,0 +1,305 @@
+{
+  "info": {
+    "_postman_id": "4f2754f9-9a7b-4a94-ad02-d353dd10f7c6",
+    "name": "M-Pesa Daraja Account Balance M-Pesa Express API",
+    "description": "Safaricom Daraja REST APIs for the M-Pesa mobile-money platform in Kenya: authorization, M-Pesa Express (STK Push), C2B, B2C, B2B, B2B Express Checkout, transaction status, account balance, reversal, dynamic QR, tax remittance and standing orders (M-Pesa Ratiba). Modeled from public Daraja documentation.\n\nContact Support:\n Name: Safaricom Daraja Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:15:25.000Z",
+    "updatedAt": "2026-07-28T02:15:25.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-4f2754f9-9a7b-4a94-ad02-d353dd10f7c6"
+  },
+  "item": [
+    {
+      "name": "mpesa",
+      "item": [
+        {
+          "name": "stkpush",
+          "item": [
+            {
+              "name": "v1",
+              "item": [
+                {
+                  "name": "processrequest",
+                  "item": [
+                    {
+                      "name": "Initiate an M-Pesa Express (STK Push) payment prompt.",
+                      "id": "8393b3ba-ee75-4b9b-8905-f2d0ffe8c8bd",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"BusinessShortCode\": \"<string>\",\n  \"Password\": \"<string>\",\n  \"Timestamp\": \"<string>\",\n  \"TransactionType\": \"CustomerPayBillOnline\",\n  \"Amount\": \"<integer>\",\n  \"PartyA\": \"<string>\",\n  \"PartyB\": \"<string>\",\n  \"PhoneNumber\": \"<string>\",\n  \"CallBackURL\": \"<uri>\",\n  \"AccountReference\": \"<string>\",\n  \"TransactionDesc\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/mpesa/stkpush/v1/processrequest",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "mpesa",
+                            "stkpush",
+                            "v1",
+                            "processrequest"
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "b1a511cc-1fda-441d-b0f5-a93f55ccc30a",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"BusinessShortCode\": \"<string>\",\n  \"Password\": \"<string>\",\n  \"Timestamp\": \"<string>\",\n  \"TransactionType\": \"CustomerPayBillOnline\",\n  \"Amount\": \"<integer>\",\n  \"PartyA\": \"<string>\",\n  \"PartyB\": \"<string>\",\n  \"PhoneNumber\": \"<string>\",\n  \"CallBackURL\": \"<uri>\",\n  \"AccountReference\": \"<string>\",\n  \"TransactionDesc\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/mpesa/stkpush/v1/processrequest",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "mpesa",
+                                "stkpush",
+                                "v1",
+                                "processrequest"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"MerchantRequestID\": \"<string>\",\n  \"CheckoutRequestID\": \"<string>\",\n  \"ResponseCode\": \"<string>\",\n  \"ResponseDescription\": \"<string>\",\n  \"CustomerMessage\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T02:15:25.000Z",
+                          "updatedAt": "2026-07-28T02:15:25.000Z",
+                          "uid": "35240-b1a511cc-1fda-441d-b0f5-a93f55ccc30a"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:15:25.000Z",
+                      "updatedAt": "2026-07-28T02:15:25.000Z",
+                      "uid": "35240-8393b3ba-ee75-4b9b-8905-f2d0ffe8c8bd"
+                    }
+                  ],
+                  "id": "dc7b3194-5c3d-45fb-b4e2-3c0ad42e19a1",
+                  "createdAt": "2026-07-28T02:15:25.000Z",
+                  "updatedAt": "2026-07-28T02:15:25.000Z",
+                  "uid": "35240-dc7b3194-5c3d-45fb-b4e2-3c0ad42e19a1"
+                }
+              ],
+              "id": "07913c23-6852-48cd-9240-8cce978cd49a",
+              "createdAt": "2026-07-28T02:15:25.000Z",
+              "updatedAt": "2026-07-28T02:15:25.000Z",
+              "uid": "35240-07913c23-6852-48cd-9240-8cce978cd49a"
+            }
+          ],
+          "id": "dbff3747-4723-4bd0-bbab-2d35a3829e9c",
+          "createdAt": "2026-07-28T02:15:25.000Z",
+          "updatedAt": "2026-07-28T02:15:25.000Z",
+          "uid": "35240-dbff3747-4723-4bd0-bbab-2d35a3829e9c"
+        },
+        {
+          "name": "stkpushquery",
+          "item": [
+            {
+              "name": "v1",
+              "item": [
+                {
+                  "name": "query",
+                  "item": [
+                    {
+                      "name": "Query the status of an STK Push request.",
+                      "id": "f6772bb8-4d34-4420-ae35-12214c0852cb",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"BusinessShortCode\": \"<string>\",\n  \"Password\": \"<string>\",\n  \"Timestamp\": \"<string>\",\n  \"CheckoutRequestID\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/mpesa/stkpushquery/v1/query",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "mpesa",
+                            "stkpushquery",
+                            "v1",
+                            "query"
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "71aaf52d-88b7-4b89-9bf2-9929fd0ed7d9",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"BusinessShortCode\": \"<string>\",\n  \"Password\": \"<string>\",\n  \"Timestamp\": \"<string>\",\n  \"CheckoutRequestID\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/mpesa/stkpushquery/v1/query",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "mpesa",
+                                "stkpushquery",
+                                "v1",
+                                "query"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{}",
+                          "createdAt": "2026-07-28T02:15:25.000Z",
+                          "updatedAt": "2026-07-28T02:15:25.000Z",
+                          "uid": "35240-71aaf52d-88b7-4b89-9bf2-9929fd0ed7d9"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:15:25.000Z",
+                      "updatedAt": "2026-07-28T02:15:25.000Z",
+                      "uid": "35240-f6772bb8-4d34-4420-ae35-12214c0852cb"
+                    }
+                  ],
+                  "id": "9b8588cd-87c9-4774-a558-003d9f3fa09e",
+                  "createdAt": "2026-07-28T02:15:25.000Z",
+                  "updatedAt": "2026-07-28T02:15:25.000Z",
+                  "uid": "35240-9b8588cd-87c9-4774-a558-003d9f3fa09e"
+                }
+              ],
+              "id": "738d821c-f6c7-419a-8aa9-775039dc6c70",
+              "createdAt": "2026-07-28T02:15:25.000Z",
+              "updatedAt": "2026-07-28T02:15:25.000Z",
+              "uid": "35240-738d821c-f6c7-419a-8aa9-775039dc6c70"
+            }
+          ],
+          "id": "513bd7fd-3778-4324-b75e-19ebb5ba10df",
+          "createdAt": "2026-07-28T02:15:25.000Z",
+          "updatedAt": "2026-07-28T02:15:25.000Z",
+          "uid": "35240-513bd7fd-3778-4324-b75e-19ebb5ba10df"
+        }
+      ],
+      "id": "0a80fc9e-2649-40a2-8f8d-515466521fd6",
+      "createdAt": "2026-07-28T02:15:25.000Z",
+      "updatedAt": "2026-07-28T02:15:25.000Z",
+      "uid": "35240-0a80fc9e-2649-40a2-8f8d-515466521fd6"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.safaricom.co.ke"
+    }
+  ]
+}

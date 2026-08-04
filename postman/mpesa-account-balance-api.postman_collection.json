@@ -1,0 +1,172 @@
+{
+  "info": {
+    "_postman_id": "f5518b68-1c0e-44f3-8066-793949cea868",
+    "name": "M-Pesa Daraja Account Balance API",
+    "description": "Safaricom Daraja REST APIs for the M-Pesa mobile-money platform in Kenya: authorization, M-Pesa Express (STK Push), C2B, B2C, B2B, B2B Express Checkout, transaction status, account balance, reversal, dynamic QR, tax remittance and standing orders (M-Pesa Ratiba). Modeled from public Daraja documentation.\n\nContact Support:\n Name: Safaricom Daraja Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:15:03.000Z",
+    "updatedAt": "2026-07-28T02:15:03.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-f5518b68-1c0e-44f3-8066-793949cea868"
+  },
+  "item": [
+    {
+      "name": "mpesa",
+      "item": [
+        {
+          "name": "accountbalance",
+          "item": [
+            {
+              "name": "v1",
+              "item": [
+                {
+                  "name": "query",
+                  "item": [
+                    {
+                      "name": "Query the balance of a business shortcode.",
+                      "id": "203da2f1-5bbd-4716-9839-414bfb71616a",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"Initiator\": \"<string>\",\n  \"SecurityCredential\": \"<string>\",\n  \"CommandID\": \"AccountBalance\",\n  \"PartyA\": \"<string>\",\n  \"IdentifierType\": \"<string>\",\n  \"Remarks\": \"<string>\",\n  \"QueueTimeOutURL\": \"<uri>\",\n  \"ResultURL\": \"<uri>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/mpesa/accountbalance/v1/query",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "mpesa",
+                            "accountbalance",
+                            "v1",
+                            "query"
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "dfb061ba-4325-4f61-a23f-9e87a584072b",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"Initiator\": \"<string>\",\n  \"SecurityCredential\": \"<string>\",\n  \"CommandID\": \"AccountBalance\",\n  \"PartyA\": \"<string>\",\n  \"IdentifierType\": \"<string>\",\n  \"Remarks\": \"<string>\",\n  \"QueueTimeOutURL\": \"<uri>\",\n  \"ResultURL\": \"<uri>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/mpesa/accountbalance/v1/query",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "mpesa",
+                                "accountbalance",
+                                "v1",
+                                "query"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"OriginatorConversationID\": \"<string>\",\n  \"ConversationID\": \"<string>\",\n  \"ResponseCode\": \"<string>\",\n  \"ResponseDescription\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T02:15:04.000Z",
+                          "updatedAt": "2026-07-28T02:15:04.000Z",
+                          "uid": "35240-dfb061ba-4325-4f61-a23f-9e87a584072b"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:15:04.000Z",
+                      "updatedAt": "2026-07-28T02:15:04.000Z",
+                      "uid": "35240-203da2f1-5bbd-4716-9839-414bfb71616a"
+                    }
+                  ],
+                  "id": "c4e65ee6-e0b5-4b88-8e0d-ea69fee19453",
+                  "createdAt": "2026-07-28T02:15:04.000Z",
+                  "updatedAt": "2026-07-28T02:15:04.000Z",
+                  "uid": "35240-c4e65ee6-e0b5-4b88-8e0d-ea69fee19453"
+                }
+              ],
+              "id": "cade5597-501f-4ef1-acbe-f51ebe26ea4c",
+              "createdAt": "2026-07-28T02:15:04.000Z",
+              "updatedAt": "2026-07-28T02:15:04.000Z",
+              "uid": "35240-cade5597-501f-4ef1-acbe-f51ebe26ea4c"
+            }
+          ],
+          "id": "621bbcf0-6dae-4035-8a7a-29ada7abf3ee",
+          "createdAt": "2026-07-28T02:15:04.000Z",
+          "updatedAt": "2026-07-28T02:15:04.000Z",
+          "uid": "35240-621bbcf0-6dae-4035-8a7a-29ada7abf3ee"
+        }
+      ],
+      "id": "4b0c3398-476b-458c-835e-544347ef48ca",
+      "createdAt": "2026-07-28T02:15:04.000Z",
+      "updatedAt": "2026-07-28T02:15:04.000Z",
+      "uid": "35240-4b0c3398-476b-458c-835e-544347ef48ca"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.safaricom.co.ke"
+    }
+  ]
+}

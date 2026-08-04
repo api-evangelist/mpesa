@@ -1,0 +1,161 @@
+{
+  "info": {
+    "_postman_id": "b03adefd-029c-4c6a-8474-f828c0099bf0",
+    "name": "M-Pesa Daraja Account Balance Standing Order API",
+    "description": "Safaricom Daraja REST APIs for the M-Pesa mobile-money platform in Kenya: authorization, M-Pesa Express (STK Push), C2B, B2C, B2B, B2B Express Checkout, transaction status, account balance, reversal, dynamic QR, tax remittance and standing orders (M-Pesa Ratiba). Modeled from public Daraja documentation.\n\nContact Support:\n Name: Safaricom Daraja Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:15:26.000Z",
+    "updatedAt": "2026-07-28T02:15:27.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-b03adefd-029c-4c6a-8474-f828c0099bf0"
+  },
+  "item": [
+    {
+      "name": "standingorder",
+      "item": [
+        {
+          "name": "v1",
+          "item": [
+            {
+              "name": "createStandingOrderExternal",
+              "item": [
+                {
+                  "name": "Create an M-Pesa Ratiba external standing order.",
+                  "id": "ac3cff8c-fa60-439d-9dd8-8a21963b6b05",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/standingorder/v1/createStandingOrderExternal",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "standingorder",
+                        "v1",
+                        "createStandingOrderExternal"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "3a885ab7-0c2b-4806-b694-0cf8f13f9671",
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/standingorder/v1/createStandingOrderExternal",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "standingorder",
+                            "v1",
+                            "createStandingOrderExternal"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{}",
+                      "createdAt": "2026-07-28T02:15:27.000Z",
+                      "updatedAt": "2026-07-28T02:15:27.000Z",
+                      "uid": "35240-3a885ab7-0c2b-4806-b694-0cf8f13f9671"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:15:27.000Z",
+                  "updatedAt": "2026-07-28T02:15:27.000Z",
+                  "uid": "35240-ac3cff8c-fa60-439d-9dd8-8a21963b6b05"
+                }
+              ],
+              "id": "c7134ea5-0ed3-471f-9ae3-b46ee56885b8",
+              "createdAt": "2026-07-28T02:15:27.000Z",
+              "updatedAt": "2026-07-28T02:15:27.000Z",
+              "uid": "35240-c7134ea5-0ed3-471f-9ae3-b46ee56885b8"
+            }
+          ],
+          "id": "624eead0-2d21-4893-81f3-580e9e1973a6",
+          "createdAt": "2026-07-28T02:15:27.000Z",
+          "updatedAt": "2026-07-28T02:15:27.000Z",
+          "uid": "35240-624eead0-2d21-4893-81f3-580e9e1973a6"
+        }
+      ],
+      "id": "a7095a8a-e4d8-42c4-932f-6ae174a963c6",
+      "createdAt": "2026-07-28T02:15:27.000Z",
+      "updatedAt": "2026-07-28T02:15:27.000Z",
+      "uid": "35240-a7095a8a-e4d8-42c4-932f-6ae174a963c6"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.safaricom.co.ke"
+    }
+  ]
+}

@@ -1,0 +1,172 @@
+{
+  "info": {
+    "_postman_id": "8d1abda2-83e5-4339-8039-39eebf781027",
+    "name": "M-Pesa Daraja Account Balance B2C API",
+    "description": "Safaricom Daraja REST APIs for the M-Pesa mobile-money platform in Kenya: authorization, M-Pesa Express (STK Push), C2B, B2C, B2B, B2B Express Checkout, transaction status, account balance, reversal, dynamic QR, tax remittance and standing orders (M-Pesa Ratiba). Modeled from public Daraja documentation.\n\nContact Support:\n Name: Safaricom Daraja Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:15:21.000Z",
+    "updatedAt": "2026-07-28T02:15:21.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-8d1abda2-83e5-4339-8039-39eebf781027"
+  },
+  "item": [
+    {
+      "name": "mpesa",
+      "item": [
+        {
+          "name": "b2c",
+          "item": [
+            {
+              "name": "v3",
+              "item": [
+                {
+                  "name": "paymentrequest",
+                  "item": [
+                    {
+                      "name": "Disburse funds from a business shortcode to a customer wallet.",
+                      "id": "6945c080-5b86-4858-9f04-21b33ec88b94",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"InitiatorName\": \"<string>\",\n  \"SecurityCredential\": \"<string>\",\n  \"CommandID\": \"BusinessPayment\",\n  \"Amount\": \"<integer>\",\n  \"PartyA\": \"<string>\",\n  \"PartyB\": \"<string>\",\n  \"QueueTimeOutURL\": \"<uri>\",\n  \"ResultURL\": \"<uri>\",\n  \"OriginatorConversationID\": \"<string>\",\n  \"Remarks\": \"<string>\",\n  \"Occasion\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/mpesa/b2c/v3/paymentrequest",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "mpesa",
+                            "b2c",
+                            "v3",
+                            "paymentrequest"
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "5aa433b2-7b94-485b-9c02-004650cb1072",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"InitiatorName\": \"<string>\",\n  \"SecurityCredential\": \"<string>\",\n  \"CommandID\": \"BusinessPayment\",\n  \"Amount\": \"<integer>\",\n  \"PartyA\": \"<string>\",\n  \"PartyB\": \"<string>\",\n  \"QueueTimeOutURL\": \"<uri>\",\n  \"ResultURL\": \"<uri>\",\n  \"OriginatorConversationID\": \"<string>\",\n  \"Remarks\": \"<string>\",\n  \"Occasion\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/mpesa/b2c/v3/paymentrequest",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "mpesa",
+                                "b2c",
+                                "v3",
+                                "paymentrequest"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"OriginatorConversationID\": \"<string>\",\n  \"ConversationID\": \"<string>\",\n  \"ResponseCode\": \"<string>\",\n  \"ResponseDescription\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T02:15:21.000Z",
+                          "updatedAt": "2026-07-28T02:15:21.000Z",
+                          "uid": "35240-5aa433b2-7b94-485b-9c02-004650cb1072"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:15:21.000Z",
+                      "updatedAt": "2026-07-28T02:15:21.000Z",
+                      "uid": "35240-6945c080-5b86-4858-9f04-21b33ec88b94"
+                    }
+                  ],
+                  "id": "54008b7d-ec6f-4b41-bb94-f02f2187a07d",
+                  "createdAt": "2026-07-28T02:15:21.000Z",
+                  "updatedAt": "2026-07-28T02:15:21.000Z",
+                  "uid": "35240-54008b7d-ec6f-4b41-bb94-f02f2187a07d"
+                }
+              ],
+              "id": "1ab27e1b-5441-483a-9e0a-4843e3771ae3",
+              "createdAt": "2026-07-28T02:15:21.000Z",
+              "updatedAt": "2026-07-28T02:15:21.000Z",
+              "uid": "35240-1ab27e1b-5441-483a-9e0a-4843e3771ae3"
+            }
+          ],
+          "id": "5f97f91a-080b-49c5-97c8-91f4712fdcf4",
+          "createdAt": "2026-07-28T02:15:21.000Z",
+          "updatedAt": "2026-07-28T02:15:21.000Z",
+          "uid": "35240-5f97f91a-080b-49c5-97c8-91f4712fdcf4"
+        }
+      ],
+      "id": "08adf482-df58-44e4-a5cb-265675452bc0",
+      "createdAt": "2026-07-28T02:15:21.000Z",
+      "updatedAt": "2026-07-28T02:15:21.000Z",
+      "uid": "35240-08adf482-df58-44e4-a5cb-265675452bc0"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.safaricom.co.ke"
+    }
+  ]
+}

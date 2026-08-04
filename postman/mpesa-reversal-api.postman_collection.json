@@ -1,0 +1,172 @@
+{
+  "info": {
+    "_postman_id": "4c70a5ec-786d-45c0-a0c7-078018ffa1d1",
+    "name": "M-Pesa Daraja Account Balance Reversal API",
+    "description": "Safaricom Daraja REST APIs for the M-Pesa mobile-money platform in Kenya: authorization, M-Pesa Express (STK Push), C2B, B2C, B2B, B2B Express Checkout, transaction status, account balance, reversal, dynamic QR, tax remittance and standing orders (M-Pesa Ratiba). Modeled from public Daraja documentation.\n\nContact Support:\n Name: Safaricom Daraja Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:15:25.000Z",
+    "updatedAt": "2026-07-28T02:15:26.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-4c70a5ec-786d-45c0-a0c7-078018ffa1d1"
+  },
+  "item": [
+    {
+      "name": "mpesa",
+      "item": [
+        {
+          "name": "reversal",
+          "item": [
+            {
+              "name": "v1",
+              "item": [
+                {
+                  "name": "request",
+                  "item": [
+                    {
+                      "name": "Reverse an M-Pesa transaction.",
+                      "id": "39f2de38-09ae-41ae-bffa-9731b099c297",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"Initiator\": \"<string>\",\n  \"SecurityCredential\": \"<string>\",\n  \"CommandID\": \"TransactionReversal\",\n  \"TransactionID\": \"<string>\",\n  \"Amount\": \"<integer>\",\n  \"ReceiverParty\": \"<string>\",\n  \"RecieverIdentifierType\": \"<string>\",\n  \"ResultURL\": \"<uri>\",\n  \"QueueTimeOutURL\": \"<uri>\",\n  \"Remarks\": \"<string>\",\n  \"Occasion\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/mpesa/reversal/v1/request",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "mpesa",
+                            "reversal",
+                            "v1",
+                            "request"
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "87a41904-165f-4970-973e-ffeac3f5b50c",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"Initiator\": \"<string>\",\n  \"SecurityCredential\": \"<string>\",\n  \"CommandID\": \"TransactionReversal\",\n  \"TransactionID\": \"<string>\",\n  \"Amount\": \"<integer>\",\n  \"ReceiverParty\": \"<string>\",\n  \"RecieverIdentifierType\": \"<string>\",\n  \"ResultURL\": \"<uri>\",\n  \"QueueTimeOutURL\": \"<uri>\",\n  \"Remarks\": \"<string>\",\n  \"Occasion\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/mpesa/reversal/v1/request",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "mpesa",
+                                "reversal",
+                                "v1",
+                                "request"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"OriginatorConversationID\": \"<string>\",\n  \"ConversationID\": \"<string>\",\n  \"ResponseCode\": \"<string>\",\n  \"ResponseDescription\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T02:15:26.000Z",
+                          "updatedAt": "2026-07-28T02:15:26.000Z",
+                          "uid": "35240-87a41904-165f-4970-973e-ffeac3f5b50c"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:15:26.000Z",
+                      "updatedAt": "2026-07-28T02:15:26.000Z",
+                      "uid": "35240-39f2de38-09ae-41ae-bffa-9731b099c297"
+                    }
+                  ],
+                  "id": "7e589b86-aebf-45ad-9dec-bb3f0cc9757f",
+                  "createdAt": "2026-07-28T02:15:26.000Z",
+                  "updatedAt": "2026-07-28T02:15:26.000Z",
+                  "uid": "35240-7e589b86-aebf-45ad-9dec-bb3f0cc9757f"
+                }
+              ],
+              "id": "29e70f6f-ef57-407a-ba49-fbde7979a3a5",
+              "createdAt": "2026-07-28T02:15:26.000Z",
+              "updatedAt": "2026-07-28T02:15:26.000Z",
+              "uid": "35240-29e70f6f-ef57-407a-ba49-fbde7979a3a5"
+            }
+          ],
+          "id": "7dd452f3-5ba2-4859-8648-da0cbbc09340",
+          "createdAt": "2026-07-28T02:15:26.000Z",
+          "updatedAt": "2026-07-28T02:15:26.000Z",
+          "uid": "35240-7dd452f3-5ba2-4859-8648-da0cbbc09340"
+        }
+      ],
+      "id": "9a625f3e-6632-448c-899c-60eee96374ac",
+      "createdAt": "2026-07-28T02:15:26.000Z",
+      "updatedAt": "2026-07-28T02:15:26.000Z",
+      "uid": "35240-9a625f3e-6632-448c-899c-60eee96374ac"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.safaricom.co.ke"
+    }
+  ]
+}

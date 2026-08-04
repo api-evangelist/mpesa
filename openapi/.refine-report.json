@@ -1,0 +1,34 @@
+{
+  "provider": "mpesa",
+  "sources": [
+    "mpesa-account-balance-api-openapi.yml",
+    "mpesa-authorization-api-openapi.yml",
+    "mpesa-b2b-api-openapi.yml",
+    "mpesa-b2c-api-openapi.yml",
+    "mpesa-c2b-api-openapi.yml",
+    "mpesa-dynamic-qr-api-openapi.yml",
+    "mpesa-m-pesa-express-api-openapi.yml",
+    "mpesa-reversal-api-openapi.yml",
+    "mpesa-standing-order-api-openapi.yml",
+    "mpesa-tax-remittance-api-openapi.yml",
+    "mpesa-transaction-status-api-openapi.yml"
+  ],
+  "outputs": [
+    "mpesa-account-balance-api-openapi.yml",
+    "mpesa-authorization-api-openapi.yml",
+    "mpesa-b2b-api-openapi.yml",
+    "mpesa-b2c-api-openapi.yml",
+    "mpesa-c2b-api-openapi.yml",
+    "mpesa-dynamic-qr-api-openapi.yml",
+    "mpesa-m-pesa-express-api-openapi.yml",
+    "mpesa-reversal-api-openapi.yml",
+    "mpesa-standing-order-api-openapi.yml",
+    "mpesa-tax-remittance-api-openapi.yml",
+    "mpesa-transaction-status-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

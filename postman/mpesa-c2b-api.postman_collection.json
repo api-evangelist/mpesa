@@ -1,0 +1,287 @@
+{
+  "info": {
+    "_postman_id": "66dfbd10-9134-4a47-b576-dda0742b523b",
+    "name": "M-Pesa Daraja Account Balance C2B API",
+    "description": "Safaricom Daraja REST APIs for the M-Pesa mobile-money platform in Kenya: authorization, M-Pesa Express (STK Push), C2B, B2C, B2B, B2B Express Checkout, transaction status, account balance, reversal, dynamic QR, tax remittance and standing orders (M-Pesa Ratiba). Modeled from public Daraja documentation.\n\nContact Support:\n Name: Safaricom Daraja Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:15:22.000Z",
+    "updatedAt": "2026-07-28T02:15:22.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-66dfbd10-9134-4a47-b576-dda0742b523b"
+  },
+  "item": [
+    {
+      "name": "mpesa",
+      "item": [
+        {
+          "name": "c2b",
+          "item": [
+            {
+              "name": "v1",
+              "item": [
+                {
+                  "name": "registerurl",
+                  "item": [
+                    {
+                      "name": "Register C2B validation and confirmation callback URLs.",
+                      "id": "118ac38b-7325-49d3-a056-4c02faeb93ac",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"ShortCode\": \"<string>\",\n  \"ResponseType\": \"Cancelled\",\n  \"ConfirmationURL\": \"<uri>\",\n  \"ValidationURL\": \"<uri>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/mpesa/c2b/v1/registerurl",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "mpesa",
+                            "c2b",
+                            "v1",
+                            "registerurl"
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "0a24ddfb-5f4a-4982-bc8d-277d4aec34cf",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"ShortCode\": \"<string>\",\n  \"ResponseType\": \"Cancelled\",\n  \"ConfirmationURL\": \"<uri>\",\n  \"ValidationURL\": \"<uri>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/mpesa/c2b/v1/registerurl",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "mpesa",
+                                "c2b",
+                                "v1",
+                                "registerurl"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{}",
+                          "createdAt": "2026-07-28T02:15:23.000Z",
+                          "updatedAt": "2026-07-28T02:15:23.000Z",
+                          "uid": "35240-0a24ddfb-5f4a-4982-bc8d-277d4aec34cf"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:15:23.000Z",
+                      "updatedAt": "2026-07-28T02:15:23.000Z",
+                      "uid": "35240-118ac38b-7325-49d3-a056-4c02faeb93ac"
+                    }
+                  ],
+                  "id": "2f703bf8-b91f-439b-9024-81533e00c6a2",
+                  "createdAt": "2026-07-28T02:15:23.000Z",
+                  "updatedAt": "2026-07-28T02:15:23.000Z",
+                  "uid": "35240-2f703bf8-b91f-439b-9024-81533e00c6a2"
+                },
+                {
+                  "name": "simulate",
+                  "item": [
+                    {
+                      "name": "Simulate an inbound C2B payment (sandbox only).",
+                      "id": "ec3477b9-f15e-4df8-a3e3-70dbdeeed873",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"ShortCode\": \"<string>\",\n  \"CommandID\": \"CustomerPayBillOnline\",\n  \"Amount\": \"<integer>\",\n  \"Msisdn\": \"<string>\",\n  \"BillRefNumber\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/mpesa/c2b/v1/simulate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "mpesa",
+                            "c2b",
+                            "v1",
+                            "simulate"
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "605d09a3-5c2c-44fc-8662-a83ee09bcfd2",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"ShortCode\": \"<string>\",\n  \"CommandID\": \"CustomerPayBillOnline\",\n  \"Amount\": \"<integer>\",\n  \"Msisdn\": \"<string>\",\n  \"BillRefNumber\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/mpesa/c2b/v1/simulate",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "mpesa",
+                                "c2b",
+                                "v1",
+                                "simulate"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{}",
+                          "createdAt": "2026-07-28T02:15:23.000Z",
+                          "updatedAt": "2026-07-28T02:15:23.000Z",
+                          "uid": "35240-605d09a3-5c2c-44fc-8662-a83ee09bcfd2"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:15:23.000Z",
+                      "updatedAt": "2026-07-28T02:15:23.000Z",
+                      "uid": "35240-ec3477b9-f15e-4df8-a3e3-70dbdeeed873"
+                    }
+                  ],
+                  "id": "ab47d828-3b8c-4379-b387-c67a7f325f52",
+                  "createdAt": "2026-07-28T02:15:23.000Z",
+                  "updatedAt": "2026-07-28T02:15:23.000Z",
+                  "uid": "35240-ab47d828-3b8c-4379-b387-c67a7f325f52"
+                }
+              ],
+              "id": "20454685-ec4b-46e9-aad8-fdfda7c48f50",
+              "createdAt": "2026-07-28T02:15:23.000Z",
+              "updatedAt": "2026-07-28T02:15:23.000Z",
+              "uid": "35240-20454685-ec4b-46e9-aad8-fdfda7c48f50"
+            }
+          ],
+          "id": "57f59ab6-08dc-4df8-a62d-8b37946da035",
+          "createdAt": "2026-07-28T02:15:23.000Z",
+          "updatedAt": "2026-07-28T02:15:23.000Z",
+          "uid": "35240-57f59ab6-08dc-4df8-a62d-8b37946da035"
+        }
+      ],
+      "id": "e6d4b684-96cd-4710-b55b-e9d951d0d513",
+      "createdAt": "2026-07-28T02:15:23.000Z",
+      "updatedAt": "2026-07-28T02:15:23.000Z",
+      "uid": "35240-e6d4b684-96cd-4710-b55b-e9d951d0d513"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.safaricom.co.ke"
+    }
+  ]
+}
