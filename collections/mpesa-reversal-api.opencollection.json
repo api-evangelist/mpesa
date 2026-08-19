@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "M-Pesa Daraja Account Balance Reversal API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Reversal",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Reverse an M-Pesa transaction.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.safaricom.co.ke/mpesa/reversal/v1/request",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Reverse an M-Pesa transaction."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

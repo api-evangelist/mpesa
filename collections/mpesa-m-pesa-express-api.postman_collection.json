@@ -1,0 +1,245 @@
+{
+  "item": [
+    {
+      "id": "f26f26b8-1b63-4370-a3a6-bcb3b7a9340d",
+      "name": "M-Pesa Express",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2aaea504-95e4-407b-933d-eeee65122a46",
+          "name": "Initiate an M-Pesa Express (STK Push) payment prompt.",
+          "request": {
+            "name": "Initiate an M-Pesa Express (STK Push) payment prompt.",
+            "description": {},
+            "url": {
+              "path": [
+                "mpesa",
+                "stkpush",
+                "v1",
+                "processrequest"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"BusinessShortCode\": \"<string>\",\n  \"Password\": \"<string>\",\n  \"Timestamp\": \"<string>\",\n  \"TransactionType\": \"<string>\",\n  \"Amount\": \"<integer>\",\n  \"PartyA\": \"<string>\",\n  \"PartyB\": \"<string>\",\n  \"PhoneNumber\": \"<string>\",\n  \"CallBackURL\": \"<uri>\",\n  \"AccountReference\": \"<string>\",\n  \"TransactionDesc\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f9496c70-cd9f-4e01-b0b2-d144dcffe99c",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "mpesa",
+                    "stkpush",
+                    "v1",
+                    "processrequest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"BusinessShortCode\": \"174379\",\n  \"Password\": \"<string>\",\n  \"Timestamp\": \"20260717120000\",\n  \"TransactionType\": \"<string>\",\n  \"Amount\": 100,\n  \"PartyA\": \"<string>\",\n  \"PartyB\": \"<string>\",\n  \"PhoneNumber\": \"<string>\",\n  \"CallBackURL\": \"<uri>\",\n  \"AccountReference\": \"<string>\",\n  \"TransactionDesc\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"MerchantRequestID\": \"string\",\n  \"CheckoutRequestID\": \"string\",\n  \"ResponseCode\": \"string\",\n  \"ResponseDescription\": \"string\",\n  \"CustomerMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7be48785-fb6a-4ae1-a985-19c4e9e8c53a",
+          "name": "Query the status of an STK Push request.",
+          "request": {
+            "name": "Query the status of an STK Push request.",
+            "description": {},
+            "url": {
+              "path": [
+                "mpesa",
+                "stkpushquery",
+                "v1",
+                "query"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"BusinessShortCode\": \"<string>\",\n  \"Password\": \"<string>\",\n  \"Timestamp\": \"<string>\",\n  \"CheckoutRequestID\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9dd49093-f040-46b3-9916-0171684ccab4",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "mpesa",
+                    "stkpushquery",
+                    "v1",
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"BusinessShortCode\": \"<string>\",\n  \"Password\": \"<string>\",\n  \"Timestamp\": \"<string>\",\n  \"CheckoutRequestID\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.safaricom.co.ke",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c1e5eb32-1ec3-4140-993d-e89e86628ce9",
+    "name": "M-Pesa Daraja Account Balance M-Pesa Express API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Safaricom Daraja REST APIs for the M-Pesa mobile-money platform in Kenya: authorization, M-Pesa Express (STK Push), C2B, B2C, B2B, B2B Express Checkout, transaction status, account balance, reversal, dynamic QR, tax remittance and standing orders (M-Pesa Ratiba). Modeled from public Daraja documentation.\n\nContact Support:\n Name: Safaricom Daraja Support",
+      "type": "text/plain"
+    }
+  }
+}

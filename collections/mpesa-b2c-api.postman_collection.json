@@ -1,0 +1,143 @@
+{
+  "item": [
+    {
+      "id": "cc080626-61fd-4e5c-aabf-e26a9f523674",
+      "name": "B2C",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e4d4ab96-210e-4e86-96bd-b9319b4a4879",
+          "name": "Disburse funds from a business shortcode to a customer wallet.",
+          "request": {
+            "name": "Disburse funds from a business shortcode to a customer wallet.",
+            "description": {},
+            "url": {
+              "path": [
+                "mpesa",
+                "b2c",
+                "v3",
+                "paymentrequest"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"InitiatorName\": \"<string>\",\n  \"SecurityCredential\": \"<string>\",\n  \"CommandID\": \"<string>\",\n  \"Amount\": \"<integer>\",\n  \"PartyA\": \"<string>\",\n  \"PartyB\": \"<string>\",\n  \"QueueTimeOutURL\": \"<uri>\",\n  \"ResultURL\": \"<uri>\",\n  \"OriginatorConversationID\": \"<string>\",\n  \"Remarks\": \"<string>\",\n  \"Occasion\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "742618ec-6bef-45d7-9629-71ee866d9b17",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "mpesa",
+                    "b2c",
+                    "v3",
+                    "paymentrequest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"InitiatorName\": \"<string>\",\n  \"SecurityCredential\": \"<string>\",\n  \"CommandID\": \"<string>\",\n  \"Amount\": \"<integer>\",\n  \"PartyA\": \"<string>\",\n  \"PartyB\": \"<string>\",\n  \"QueueTimeOutURL\": \"<uri>\",\n  \"ResultURL\": \"<uri>\",\n  \"OriginatorConversationID\": \"<string>\",\n  \"Remarks\": \"<string>\",\n  \"Occasion\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"OriginatorConversationID\": \"string\",\n  \"ConversationID\": \"string\",\n  \"ResponseCode\": \"string\",\n  \"ResponseDescription\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.safaricom.co.ke",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "542dcde3-6c12-4519-bfed-b7e8b958dc10",
+    "name": "M-Pesa Daraja Account Balance B2C API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Safaricom Daraja REST APIs for the M-Pesa mobile-money platform in Kenya: authorization, M-Pesa Express (STK Push), C2B, B2C, B2B, B2B Express Checkout, transaction status, account balance, reversal, dynamic QR, tax remittance and standing orders (M-Pesa Ratiba). Modeled from public Daraja documentation.\n\nContact Support:\n Name: Safaricom Daraja Support",
+      "type": "text/plain"
+    }
+  }
+}

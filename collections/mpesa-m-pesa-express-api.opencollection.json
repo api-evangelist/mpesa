@@ -1,0 +1,54 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "M-Pesa Daraja Account Balance M-Pesa Express API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "M-Pesa Express",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Initiate an M-Pesa Express (STK Push) payment prompt.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.safaricom.co.ke/mpesa/stkpush/v1/processrequest",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Initiate an M-Pesa Express (STK Push) payment prompt."
+        },
+        {
+          "info": {
+            "name": "Query the status of an STK Push request.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.safaricom.co.ke/mpesa/stkpushquery/v1/query",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Query the status of an STK Push request."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

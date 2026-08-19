@@ -1,0 +1,54 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "M-Pesa Daraja Account Balance C2B API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "C2B",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Register C2B validation and confirmation callback URLs.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.safaricom.co.ke/mpesa/c2b/v1/registerurl",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Register C2B validation and confirmation callback URLs."
+        },
+        {
+          "info": {
+            "name": "Simulate an inbound C2B payment (sandbox only).",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.safaricom.co.ke/mpesa/c2b/v1/simulate",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Simulate an inbound C2B payment (sandbox only)."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "M-Pesa Daraja Account Balance Transaction Status API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Transaction Status",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Query the status of an M-Pesa transaction.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.safaricom.co.ke/mpesa/transactionstatus/v1/query",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Query the status of an M-Pesa transaction."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

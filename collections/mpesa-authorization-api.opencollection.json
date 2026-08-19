@@ -1,0 +1,47 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "M-Pesa Daraja Account Balance Authorization API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Authorization",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Generate an OAuth access token.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.safaricom.co.ke/oauth/v1/generate",
+            "params": [
+              {
+                "name": "grant_type",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Returns a short-lived (typically 3599s) OAuth access token. Authenticate with HTTP Basic using the app consumer key as username and consumer secret as password."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

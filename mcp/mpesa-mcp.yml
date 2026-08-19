@@ -2,13 +2,11 @@ generated: '2026-07-17'
 method: derived
 status: candidate
 source: openapi/mpesa-openapi.yml
-description: >-
-  Safaricom does not operate an official hosted/remote MCP server for Daraja. Community MCP
-  servers exist (e.g. mboya/daraja-mcp on lobehub) but are not first-party. The tool list
-  below is a CANDIDATE, derived one-to-one from the M-Pesa Daraja OpenAPI operations — a
-  starting point for exposing Daraja to AI agents. Funds-movement tools (b2c, b2b, reversal,
-  tax_remittance) move real money in KES and should require human-in-the-loop confirmation
-  (see agentic-access/mpesa-agentic-access.yml).
+description: Safaricom does not operate an official hosted/remote MCP server for Daraja. Community MCP
+  servers exist (e.g. mboya/daraja-mcp on lobehub) but are not first-party. The tool list below is a CANDIDATE,
+  derived one-to-one from the M-Pesa Daraja OpenAPI operations — a starting point for exposing Daraja
+  to AI agents. Funds-movement tools (b2c, b2b, reversal, tax_remittance) move real money in KES and should
+  require human-in-the-loop confirmation (see agentic-access/mpesa-agentic-access.yml).
 server:
   name: mpesa-daraja
   transport: http
@@ -59,3 +57,9 @@ tools:
 - name: create_standing_order
   description: Create an M-Pesa Ratiba external standing order.
   source_operation: openapi/mpesa-openapi.yml#createStandingOrder
+deployment:
+  mode: none
+  verified: derived
+  tools: 14
+  checked: '2026-08-12'
+  source: catalog MCP census

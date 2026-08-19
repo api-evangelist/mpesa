@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "M-Pesa Daraja Account Balance Standing Order API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Standing Order",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create an M-Pesa Ratiba external standing order.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.safaricom.co.ke/standingorder/v1/createStandingOrderExternal",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an M-Pesa Ratiba external standing order."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "M-Pesa Daraja Account Balance Dynamic QR API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Dynamic QR",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Generate a dynamic M-Pesa QR code.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.safaricom.co.ke/mpesa/qrcode/v1/generate",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generate a dynamic M-Pesa QR code."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

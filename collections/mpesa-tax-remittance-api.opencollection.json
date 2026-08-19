@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "M-Pesa Daraja Account Balance Tax Remittance API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Tax Remittance",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Remit taxes to the Kenya Revenue Authority (KRA).",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.safaricom.co.ke/mpesa/b2b/v1/remittax",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Remit taxes to the Kenya Revenue Authority (KRA)."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

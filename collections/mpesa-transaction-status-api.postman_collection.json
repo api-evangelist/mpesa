@@ -1,0 +1,143 @@
+{
+  "item": [
+    {
+      "id": "e79099da-fc8f-4a31-8bb5-fe3f1815e63b",
+      "name": "Transaction Status",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "406ac86c-dc6c-468b-897e-44759dacf8f2",
+          "name": "Query the status of an M-Pesa transaction.",
+          "request": {
+            "name": "Query the status of an M-Pesa transaction.",
+            "description": {},
+            "url": {
+              "path": [
+                "mpesa",
+                "transactionstatus",
+                "v1",
+                "query"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"Initiator\": \"<string>\",\n  \"SecurityCredential\": \"<string>\",\n  \"CommandID\": \"TransactionStatusQuery\",\n  \"TransactionID\": \"<string>\",\n  \"PartyA\": \"<string>\",\n  \"IdentifierType\": \"<string>\",\n  \"ResultURL\": \"<uri>\",\n  \"QueueTimeOutURL\": \"<uri>\",\n  \"Remarks\": \"<string>\",\n  \"Occasion\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d963355c-f5a9-4d5e-a26a-ae415eaaddb0",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "mpesa",
+                    "transactionstatus",
+                    "v1",
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Initiator\": \"<string>\",\n  \"SecurityCredential\": \"<string>\",\n  \"CommandID\": \"TransactionStatusQuery\",\n  \"TransactionID\": \"<string>\",\n  \"PartyA\": \"<string>\",\n  \"IdentifierType\": \"<string>\",\n  \"ResultURL\": \"<uri>\",\n  \"QueueTimeOutURL\": \"<uri>\",\n  \"Remarks\": \"<string>\",\n  \"Occasion\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"OriginatorConversationID\": \"string\",\n  \"ConversationID\": \"string\",\n  \"ResponseCode\": \"string\",\n  \"ResponseDescription\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.safaricom.co.ke",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "48373135-44ec-46d4-a13c-5f524d3afaa5",
+    "name": "M-Pesa Daraja Account Balance Transaction Status API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Safaricom Daraja REST APIs for the M-Pesa mobile-money platform in Kenya: authorization, M-Pesa Express (STK Push), C2B, B2C, B2B, B2B Express Checkout, transaction status, account balance, reversal, dynamic QR, tax remittance and standing orders (M-Pesa Ratiba). Modeled from public Daraja documentation.\n\nContact Support:\n Name: Safaricom Daraja Support",
+      "type": "text/plain"
+    }
+  }
+}

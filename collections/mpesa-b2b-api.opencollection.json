@@ -1,0 +1,54 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "M-Pesa Daraja Account Balance B2B API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "B2B",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Move funds between two business shortcodes.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.safaricom.co.ke/mpesa/b2b/v1/paymentrequest",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Move funds between two business shortcodes."
+        },
+        {
+          "info": {
+            "name": "Trigger a B2B Express Checkout USSD push to a till operator.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.safaricom.co.ke/v1/ussdpush/get-msisdn",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Trigger a B2B Express Checkout USSD push to a till operator."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
