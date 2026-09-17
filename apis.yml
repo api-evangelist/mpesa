@@ -131,44 +131,6 @@ apis:
     url: https://developer.safaricom.co.ke/APIs/BillManager
   - type: Documentation
     url: https://developer.safaricom.co.ke/APIs/MpesaRatiba
-- aid: mpesa:mpesa-b2b-api
-  name: M-Pesa (Safaricom Daraja) B2B API
-  description: The B2B API from M-Pesa (Safaricom Daraja) — 2 operation(s) for b2b.
-  humanURL: https://developer.safaricom.co.ke/APIs/Authorization
-  baseURL: https://api.safaricom.co.ke
-  tags:
-  - B2B
-  properties:
-  - type: OpenAPI
-    url: openapi/mpesa-b2b-api-openapi.yml
-  - type: Documentation
-    url: https://developer.safaricom.co.ke/APIs/Authorization
-  - type: PostmanCollection
-    url: collections/mpesa.postman_collection.json
-  - type: Documentation
-    url: https://developer.safaricom.co.ke/APIs/MpesaExpressSimulate
-  - type: Documentation
-    url: https://developer.safaricom.co.ke/APIs/CustomerToBusinessRegisterURL
-  - type: Documentation
-    url: https://developer.safaricom.co.ke/APIs/BusinessToCustomer
-  - type: Documentation
-    url: https://developer.safaricom.co.ke/APIs/BusinessPayBill
-  - type: Documentation
-    url: https://developer.safaricom.co.ke/APIs/B2BExpressCheckout
-  - type: Documentation
-    url: https://developer.safaricom.co.ke/APIs/TransactionStatus
-  - type: Documentation
-    url: https://developer.safaricom.co.ke/APIs/AccountBalance
-  - type: Documentation
-    url: https://developer.safaricom.co.ke/APIs/Reversal
-  - type: Documentation
-    url: https://developer.safaricom.co.ke/APIs/DynamicQRCode
-  - type: Documentation
-    url: https://developer.safaricom.co.ke/APIs/TaxRemittance
-  - type: Documentation
-    url: https://developer.safaricom.co.ke/APIs/BillManager
-  - type: Documentation
-    url: https://developer.safaricom.co.ke/APIs/MpesaRatiba
 - aid: mpesa:mpesa-b2c-api
   name: M-Pesa (Safaricom Daraja) B2C API
   description: The B2C API from M-Pesa (Safaricom Daraja) — 1 operation(s) for b2c.
@@ -449,6 +411,44 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/mpesa-transaction-status-api-openapi.yml
+  - type: Documentation
+    url: https://developer.safaricom.co.ke/APIs/Authorization
+  - type: PostmanCollection
+    url: collections/mpesa.postman_collection.json
+  - type: Documentation
+    url: https://developer.safaricom.co.ke/APIs/MpesaExpressSimulate
+  - type: Documentation
+    url: https://developer.safaricom.co.ke/APIs/CustomerToBusinessRegisterURL
+  - type: Documentation
+    url: https://developer.safaricom.co.ke/APIs/BusinessToCustomer
+  - type: Documentation
+    url: https://developer.safaricom.co.ke/APIs/BusinessPayBill
+  - type: Documentation
+    url: https://developer.safaricom.co.ke/APIs/B2BExpressCheckout
+  - type: Documentation
+    url: https://developer.safaricom.co.ke/APIs/TransactionStatus
+  - type: Documentation
+    url: https://developer.safaricom.co.ke/APIs/AccountBalance
+  - type: Documentation
+    url: https://developer.safaricom.co.ke/APIs/Reversal
+  - type: Documentation
+    url: https://developer.safaricom.co.ke/APIs/DynamicQRCode
+  - type: Documentation
+    url: https://developer.safaricom.co.ke/APIs/TaxRemittance
+  - type: Documentation
+    url: https://developer.safaricom.co.ke/APIs/BillManager
+  - type: Documentation
+    url: https://developer.safaricom.co.ke/APIs/MpesaRatiba
+- aid: mpesa:mpesa-b2-b-api
+  name: M-Pesa (Safaricom Daraja) B2 B API
+  description: The B2 B API from M-Pesa (Safaricom Daraja) — 2 operation(s) for b2 b.
+  humanURL: https://developer.safaricom.co.ke/APIs/Authorization
+  baseURL: https://api.safaricom.co.ke
+  tags:
+  - B2 B
+  properties:
+  - type: OpenAPI
+    url: openapi/mpesa-b2-b-api-openapi.yml
   - type: Documentation
     url: https://developer.safaricom.co.ke/APIs/Authorization
   - type: PostmanCollection
