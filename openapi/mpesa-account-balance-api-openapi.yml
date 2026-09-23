@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: M-Pesa Daraja Account Balance API
   description: 'Safaricom Daraja REST APIs for the M-Pesa mobile-money platform in Kenya: authorization, M-Pesa Express (STK Push), C2B, B2C, B2B, B2B Express Checkout, transaction status, account balance, reversal, dynamic QR, tax remittance and standing orders (M-Pesa Ratiba). Modeled from public Daraja documentation.'
@@ -22,7 +22,7 @@ paths:
       operationId: accountBalance
       tags:
       - Account Balance
-      summary: Query the balance of a business shortcode.
+      summary: Query the balance of a business shortcode
       requestBody:
         required: true
         content:

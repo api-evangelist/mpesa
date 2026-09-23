@@ -1,17 +1,7 @@
 {
   "provider": "mpesa",
   "sources": [
-    "mpesa-account-balance-api-openapi.yml",
-    "mpesa-authorization-api-openapi.yml",
-    "mpesa-b2b-api-openapi.yml",
-    "mpesa-b2c-api-openapi.yml",
-    "mpesa-c2b-api-openapi.yml",
-    "mpesa-dynamic-qr-api-openapi.yml",
-    "mpesa-m-pesa-express-api-openapi.yml",
-    "mpesa-reversal-api-openapi.yml",
-    "mpesa-standing-order-api-openapi.yml",
-    "mpesa-tax-remittance-api-openapi.yml",
-    "mpesa-transaction-status-api-openapi.yml"
+    "_original/mpesa-openapi.yml"
   ],
   "outputs": [
     "mpesa-account-balance-api-openapi.yml",
@@ -26,9 +16,28 @@
     "mpesa-tax-remittance-api-openapi.yml",
     "mpesa-transaction-status-api-openapi.yml"
   ],
-  "archived": [],
+  "archived": [
+    "deleted 1 superseded output(s) from the previous generation"
+  ],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "mpesa-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "superseded outputs removed: mpesa-b2-b-api-openapi.yml",
+    "apis.yml register: written (+1 apis, 11 total)"
+  ],
+  "skipped": [
+    "mpesa-account-balance-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mpesa-authorization-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mpesa-b2-b-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mpesa-b2c-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mpesa-c2b-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mpesa-dynamic-qr-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mpesa-m-pesa-express-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mpesa-reversal-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mpesa-standing-order-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mpesa-tax-remittance-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mpesa-transaction-status-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

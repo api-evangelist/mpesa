@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: M-Pesa Daraja Account Balance Tax Remittance API
+  title: M-Pesa Daraja Tax Remittance API
   description: 'Safaricom Daraja REST APIs for the M-Pesa mobile-money platform in Kenya: authorization, M-Pesa Express (STK Push), C2B, B2C, B2B, B2B Express Checkout, transaction status, account balance, reversal, dynamic QR, tax remittance and standing orders (M-Pesa Ratiba). Modeled from public Daraja documentation.'
   version: '1.0'
   termsOfService: https://developer.safaricom.co.ke/
@@ -22,7 +22,7 @@ paths:
       operationId: taxRemittance
       tags:
       - Tax Remittance
-      summary: Remit taxes to the Kenya Revenue Authority (KRA).
+      summary: Remit taxes to the Kenya Revenue Authority (KRA)
       requestBody:
         required: true
         content:

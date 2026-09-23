@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: M-Pesa Daraja Account Balance C2B API
+  title: M-Pesa Daraja C2 B API
   description: 'Safaricom Daraja REST APIs for the M-Pesa mobile-money platform in Kenya: authorization, M-Pesa Express (STK Push), C2B, B2C, B2B, B2B Express Checkout, transaction status, account balance, reversal, dynamic QR, tax remittance and standing orders (M-Pesa Ratiba). Modeled from public Daraja documentation.'
   version: '1.0'
   termsOfService: https://developer.safaricom.co.ke/
@@ -22,7 +22,7 @@ paths:
       operationId: c2bRegisterURL
       tags:
       - C2B
-      summary: Register C2B validation and confirmation callback URLs.
+      summary: Register C2B validation and confirmation callback URLs
       requestBody:
         required: true
         content:
@@ -41,7 +41,7 @@ paths:
       operationId: c2bSimulate
       tags:
       - C2B
-      summary: Simulate an inbound C2B payment (sandbox only).
+      summary: Simulate an inbound C2B payment (sandbox only)
       requestBody:
         required: true
         content:
