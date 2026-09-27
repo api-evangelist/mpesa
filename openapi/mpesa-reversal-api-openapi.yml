@@ -38,18 +38,6 @@ paths:
                 $ref: '#/components/schemas/AsyncAckResponse'
 components:
   schemas:
-    AsyncAckResponse:
-      type: object
-      description: Synchronous acknowledgement; the real result is POSTed to ResultURL.
-      properties:
-        OriginatorConversationID:
-          type: string
-        ConversationID:
-          type: string
-        ResponseCode:
-          type: string
-        ResponseDescription:
-          type: string
     ReversalRequest:
       type: object
       properties:
@@ -77,6 +65,18 @@ components:
         Remarks:
           type: string
         Occasion:
+          type: string
+    AsyncAckResponse:
+      type: object
+      description: Synchronous acknowledgement; the real result is POSTed to ResultURL.
+      properties:
+        OriginatorConversationID:
+          type: string
+        ConversationID:
+          type: string
+        ResponseCode:
+          type: string
+        ResponseDescription:
           type: string
   securitySchemes:
     bearerAuth:

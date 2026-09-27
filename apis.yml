@@ -137,6 +137,8 @@ apis:
   humanURL: https://developer.safaricom.co.ke/APIs/Authorization
   baseURL: https://api.safaricom.co.ke
   tags:
+  - Consumer
+  tags_raw:
   - B2C
   properties:
   - type: OpenAPI
@@ -445,8 +447,6 @@ apis:
   humanURL: https://developer.safaricom.co.ke/APIs/Authorization
   baseURL: https://api.safaricom.co.ke
   tags:
-  - B2B
-  tags_raw:
   - B2 B
   properties:
   - type: OpenAPI

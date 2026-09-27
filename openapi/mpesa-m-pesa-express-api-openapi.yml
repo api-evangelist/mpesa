@@ -57,6 +57,22 @@ paths:
                 type: object
 components:
   schemas:
+    STKQueryRequest:
+      type: object
+      required:
+      - BusinessShortCode
+      - Password
+      - Timestamp
+      - CheckoutRequestID
+      properties:
+        BusinessShortCode:
+          type: string
+        Password:
+          type: string
+        Timestamp:
+          type: string
+        CheckoutRequestID:
+          type: string
     STKPushResponse:
       type: object
       properties:
@@ -116,22 +132,6 @@ components:
         AccountReference:
           type: string
         TransactionDesc:
-          type: string
-    STKQueryRequest:
-      type: object
-      required:
-      - BusinessShortCode
-      - Password
-      - Timestamp
-      - CheckoutRequestID
-      properties:
-        BusinessShortCode:
-          type: string
-        Password:
-          type: string
-        Timestamp:
-          type: string
-        CheckoutRequestID:
           type: string
   securitySchemes:
     bearerAuth:
