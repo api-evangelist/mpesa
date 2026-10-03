@@ -57,6 +57,18 @@ paths:
                 type: object
 components:
   schemas:
+    AsyncAckResponse:
+      type: object
+      description: Synchronous acknowledgement; the real result is POSTed to ResultURL.
+      properties:
+        OriginatorConversationID:
+          type: string
+        ConversationID:
+          type: string
+        ResponseCode:
+          type: string
+        ResponseDescription:
+          type: string
     B2BRequest:
       type: object
       required:
@@ -99,18 +111,6 @@ components:
         ResultURL:
           type: string
           format: uri
-    AsyncAckResponse:
-      type: object
-      description: Synchronous acknowledgement; the real result is POSTed to ResultURL.
-      properties:
-        OriginatorConversationID:
-          type: string
-        ConversationID:
-          type: string
-        ResponseCode:
-          type: string
-        ResponseDescription:
-          type: string
   securitySchemes:
     bearerAuth:
       type: http

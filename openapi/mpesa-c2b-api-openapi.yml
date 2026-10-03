@@ -57,6 +57,22 @@ paths:
                 type: object
 components:
   schemas:
+    C2BSimulateRequest:
+      type: object
+      properties:
+        ShortCode:
+          type: string
+        CommandID:
+          type: string
+          enum:
+          - CustomerPayBillOnline
+          - CustomerBuyGoodsOnline
+        Amount:
+          type: integer
+        Msisdn:
+          type: string
+        BillRefNumber:
+          type: string
     C2BRegisterURLRequest:
       type: object
       required:
@@ -78,22 +94,6 @@ components:
         ValidationURL:
           type: string
           format: uri
-    C2BSimulateRequest:
-      type: object
-      properties:
-        ShortCode:
-          type: string
-        CommandID:
-          type: string
-          enum:
-          - CustomerPayBillOnline
-          - CustomerBuyGoodsOnline
-        Amount:
-          type: integer
-        Msisdn:
-          type: string
-        BillRefNumber:
-          type: string
   securitySchemes:
     bearerAuth:
       type: http

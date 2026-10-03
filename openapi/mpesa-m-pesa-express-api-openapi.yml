@@ -73,19 +73,6 @@ components:
           type: string
         CheckoutRequestID:
           type: string
-    STKPushResponse:
-      type: object
-      properties:
-        MerchantRequestID:
-          type: string
-        CheckoutRequestID:
-          type: string
-        ResponseCode:
-          type: string
-        ResponseDescription:
-          type: string
-        CustomerMessage:
-          type: string
     STKPushRequest:
       type: object
       required:
@@ -132,6 +119,19 @@ components:
         AccountReference:
           type: string
         TransactionDesc:
+          type: string
+    STKPushResponse:
+      type: object
+      properties:
+        MerchantRequestID:
+          type: string
+        CheckoutRequestID:
+          type: string
+        ResponseCode:
+          type: string
+        ResponseDescription:
+          type: string
+        CustomerMessage:
           type: string
   securitySchemes:
     bearerAuth:
