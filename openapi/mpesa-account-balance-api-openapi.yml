@@ -38,18 +38,6 @@ paths:
                 $ref: '#/components/schemas/AsyncAckResponse'
 components:
   schemas:
-    AsyncAckResponse:
-      type: object
-      description: Synchronous acknowledgement; the real result is POSTed to ResultURL.
-      properties:
-        OriginatorConversationID:
-          type: string
-        ConversationID:
-          type: string
-        ResponseCode:
-          type: string
-        ResponseDescription:
-          type: string
     AccountBalanceRequest:
       type: object
       properties:
@@ -72,6 +60,18 @@ components:
         ResultURL:
           type: string
           format: uri
+    AsyncAckResponse:
+      type: object
+      description: Synchronous acknowledgement; the real result is POSTed to ResultURL.
+      properties:
+        OriginatorConversationID:
+          type: string
+        ConversationID:
+          type: string
+        ResponseCode:
+          type: string
+        ResponseDescription:
+          type: string
   securitySchemes:
     bearerAuth:
       type: http
