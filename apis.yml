@@ -447,6 +447,8 @@ apis:
   humanURL: https://developer.safaricom.co.ke/APIs/Authorization
   baseURL: https://api.safaricom.co.ke
   tags:
+  - B2B
+  tags_raw:
   - B2 B
   properties:
   - type: OpenAPI
@@ -480,6 +482,9 @@ apis:
   - type: Documentation
     url: https://developer.safaricom.co.ke/APIs/MpesaRatiba
 common:
+- type: CapabilityMap
+  url: capabilities/mpesa-capability-edges.yml
+  name: M-Pesa (Safaricom Daraja) Business Capability Map
 - type: PostmanWorkspace
   url: https://www.postman.com/kinlaneapi/m-pesa-safaricom-daraja/overview
 - type: AgenticAccess
