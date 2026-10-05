@@ -1,0 +1,25 @@
+slug: mpesa
+provider: M-Pesa (Safaricom Daraja)
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 1
+edges:
+- tag: Tax Remittance
+  spec_file: mpesa-tax-remittance-api-openapi.yml
+  capability_id: BC-220
+  capability_id_l1: BC-220
+  capability_name: Tax Management
+  confidence: 0.75
+  evidence: POST /mpesa/b2b/v1/remittax — "Remit taxes to the Kenya Revenue Authority (KRA)", schema TaxRemittanceRequest
+  reason: The operation pays/remits tax liabilities to the national revenue authority, which is tax management.
+    The tax type (direct vs indirect) and whether it is a filing or just a payment are not stated, so
+    no L2 is asserted.
