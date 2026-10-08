@@ -442,12 +442,12 @@ apis:
   - type: Documentation
     url: https://developer.safaricom.co.ke/APIs/MpesaRatiba
 - aid: mpesa:mpesa-b2-b-api
-  name: M-Pesa (Safaricom Daraja) B2 B API
-  description: The B2 B API from M-Pesa (Safaricom Daraja) — 2 operation(s) for b2 b.
+  name: M-Pesa (Safaricom Daraja) B2B API
+  description: The B2B API from M-Pesa (Safaricom Daraja) — 2 operation(s) for b2b.
   humanURL: https://developer.safaricom.co.ke/APIs/Authorization
   baseURL: https://api.safaricom.co.ke
   tags:
-  - B2 B
+  - B2B
   properties:
   - type: OpenAPI
     url: openapi/mpesa-b2-b-api-openapi.yml
