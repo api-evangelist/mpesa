@@ -15,13 +15,13 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: B2 B
+- name: B2B
 paths:
   /mpesa/b2b/v1/paymentrequest:
     post:
       operationId: b2bPaymentRequest
       tags:
-      - B2 B
+      - B2B
       summary: Move funds between two business shortcodes
       requestBody:
         required: true
@@ -40,7 +40,7 @@ paths:
     post:
       operationId: b2bExpressCheckout
       tags:
-      - B2 B
+      - B2B
       summary: Trigger a B2B Express Checkout USSD push to a till operator
       requestBody:
         required: true
