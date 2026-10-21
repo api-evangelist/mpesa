@@ -1,0 +1,51 @@
+edges:
+- partner_name: Central Bank of Kenya authorized Payment Service Providers
+  partner: null
+  partner_match: register
+  type: register
+  channel: regulator-register
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://www.centralbank.go.ke/wp-content/uploads/2026/09/Directory-of-Authorized-Payment-Service-Providers-August-10-2026.pdf
+  category: Kenyan payment-service authorisation
+  contract_reference:
+    register: Central Bank of Kenya authorized Payment Service Providers
+    spec_file: null
+    standard: null
+    role: licensed-participant
+    registrations:
+    - registered_name: Safaricom PLC
+      licences:
+      - mobile money
+      - payment platform / merchant processing
+      register_country: KE
+      matched_domain: safaricom.co.ke
+      matched_by: domain+local-verified
+    signal_note: 'participation only: a regulator licence / registration; no API conformance is published by this
+      register'
+    detected_by: sweep-africa-payments.py
+    detected: '2026-10-20'
+  detected_by: sweep-africa-payments.py
+  first_seen: '2026-10-20'
+generated: '2026-10-20'
+method: searched
+source:
+- https://www.cbn.gov.ng/PaymentsSystem/PSPs.html
+- https://www.cbn.gov.ng/PaymentsSystem/InternationalMoneyTransferOperators.html
+- https://www.centralbank.go.ke/wp-content/uploads/2026/09/Directory-of-Authorized-Payment-Service-Providers-August-10-2026.pdf
+- https://www.centralbank.go.ke/wp-content/uploads/2026/10/Directory-of-Licenced-Money-Remittance-Providers-as-at-September-30-2026.pdf
+- https://authorisation.pasa.org.za/so-and-tppp/documents/
+- https://authorisation.pasa.org.za/wp-content/uploads/2026/07/Public-list-SO-July-2026.pdf
+- https://authorisation.pasa.org.za/wp-content/uploads/2026/07/Public-list-TPPP-July-2026.pdf
+- https://www.bog.gov.gh/fintech-innovation/approved-institutions/
+- https://www.bceao.int/fr/content/etablissements-de-monnaie-electronique
+checked:
+- https://authorisation.pasa.org.za/so-and-tppp/documents/
+- https://authorisation.pasa.org.za/wp-content/uploads/2026/07/Public-list-SO-July-2026.pdf
+- https://authorisation.pasa.org.za/wp-content/uploads/2026/07/Public-list-TPPP-July-2026.pdf
+- https://www.bceao.int/fr/content/etablissements-de-monnaie-electronique
+- https://www.bog.gov.gh/fintech-innovation/approved-institutions/
+- https://www.cbn.gov.ng/PaymentsSystem/InternationalMoneyTransferOperators.html
+- https://www.cbn.gov.ng/PaymentsSystem/PSPs.html
+- https://www.centralbank.go.ke/wp-content/uploads/2026/09/Directory-of-Authorized-Payment-Service-Providers-August-10-2026.pdf
+- https://www.centralbank.go.ke/wp-content/uploads/2026/10/Directory-of-Licenced-Money-Remittance-Providers-as-at-September-30-2026.pdf
